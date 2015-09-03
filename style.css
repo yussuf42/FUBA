@@ -1,67 +1,53 @@
-#todos .panel {
+*{
+    font-family: arial, helvetica, Sans-Serif;
+    text-rendering: optimizeLegibility;
+}
+
+h1{
+    font-family: helvetica;
+    font-size: 36px;
+    margin: 0 auto;
+    width: 610px;
+}
+
+.row{
+
+    float: left;
+    width: 100%;   
+}
+
+
+
+#input_container{
+    float: left;
+    width: 1060px;
+    margin: 20px 100px;
+}
+
+.inner_container{
+    width: 800px;
+    margin: 0 auto;
+}
+
+#landing_username{
+    float: left;
+    margin: 0 auto 20px;
+    width: 400px;
+}
+
+#landing_question{
+    float: left;
+    width: 800px;
+    min-height: 100px;
+    max-height: 300px;
+}
+
+#questions{
+    border:  2px solid #000;
+    width: 980px;
+    margin: 10px auto;
+    padding: 10px;
+}
+.single_q_container{
     margin: 10px 0;
 }
-.panel .btn {
-    padding: 8px 6px;
-    height: 38px;
-}
-#todos .active .panel-heading {
-    background-color: #f39c12;
-    color: white;
-    font-weight: bold;
-}
-#todos .panel-heading {
-    background-color: white;
-    color: black;
-    text-overflow: ellipsis;
-}
-#todos .start{
-    background-color: white;
-    color: #2c3e50;
-}
-#todos .start:hover {
-    background-color: #ccc;
-}
-.insert-todo input {
-    font-size: 17px;
-}
-.container {
-    padding-top: 20px;
-}
-html {
-    min-height: 100%;
-}
-body {
-    background: linear-gradient(-45deg,#D6EAFF 0,#FFEFDE 100%);
-    background-size: cover;
-}
-.header, .marketing, .footer {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.header {
-    border-bottom: 1px solid #e5e5e5;
-}
-.header h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-}
-.footer {
-    padding-top: 10px;
-    color: #777;
-    border-top: 1px solid #e5e5e5;
-}
-@media(min-width: 768px) {
-    .container {
-        max-width: 730px;
-    }
-}
-.marketing {
-    margin: 40px 0;
-}
-.clear {
-    clear: both;
-}
-a[href], button { touch-action: manipulation; }

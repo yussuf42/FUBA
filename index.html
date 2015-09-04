@@ -8,7 +8,6 @@
 
 
 
-
 <body>
   <div id="landing_header">
     <div class="row">
@@ -33,19 +32,13 @@
       </form>
     </div>
   </div>
-  <button type="button" onchange="QuestionController.onReady()" autocomplete="off">
-  OnReady-Exe
-  </button>
-  <button type="button" onchange="QuestionController.test()" autocomplete="off">
-test-Exe
-  </button>
 <div id="questions"></div>
   <script id="question_template" type="text/x-handlebars-template">
 
       {{#each questions}}
       <div class="single_q_container">
         <p> {{Q_Asker}} posted at {{Q_Date}}</p>
-        <h3>{{Q_Title}}</h3>
+        <a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
         <div class="single_q_text">
           <p>{{Q_Text}}</p>
       <p>----------------------------------------------------</p>
@@ -64,14 +57,9 @@ test-Exe
     
     <script type="text/javascript">
     function Submit_Question(){
-
-$("#landing_username").val("LALALA");
-alert($("#landing_username").val());
-
       var temp_user = $("#landing_username").val();
       var temp_title = $("#question_title_input").val();
       var temp_question = $("#landing_question").val();
-      alert(temp_user);
       QuestionController.add(temp_user,temp_title,temp_question);
     }
 

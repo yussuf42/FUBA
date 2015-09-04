@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var query = window.location.search.substring(1);
+	</script>
+</head>
+<body>
+	<div id="single"></div>
+	<script id="single_template" type="text/x-handlebars-template">
+		{{#each single}}
+		<div class="single_q_container">
+			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
+			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<div class="single_q_text">
+				<p>{{Q_Text}}</p>
+				<p>----------------------------------------------------</p>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+
+</script>
+<div id="answers"></div>
+<script id="answer_template" type="text/x-handlebars-template">
+	{{#each answers}}
+	<div class="single_a_container">
+		<p>{{A_Giver}} said at {{A_Date}} :</p>
+		<p>{{A_Text}}</p>
+		<p>----------------------------------------------------</p>
+	</div>
+</div>
+</div>
+{{/each}}
+
+</script>
+
+<div id="answer_container">
+	<form id="add_answer" onSubmit="return Submit_Answer();">
+		<div class="row">
+			<input required id="answer_username" type="text" placeholder="Type Your Username here!" value="" >
+		</div>
+		<div class="row">
+			<textarea required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!" >
+			</textarea>
+		</div>
+		<input type="submit">Submit Your Answer!</input>
+	</form>
+</div>
+
+<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="single.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+
+<script type="text/javascript">
+	function Submit_Answer(){
+		var temp_user = $("#answer_username").val();
+		var temp_answer = $("#answer_text").val();
+		AnswerController.add(temp_user,temp_answer);
+		location.reload();
+		return false;
+	}
+
+	function Redirect(){
+	    var query = window.location.search.substring(1);
+	    var url = "http://127.0.0.1:8050/SingleQuestion.html?";
+	    var loc = url.concat(query);
+	    window.location(loc);
+	}
+</script>
+
+</body>
+</html>
+

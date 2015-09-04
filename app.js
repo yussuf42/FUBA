@@ -26,11 +26,7 @@ var QuestionController= (function() {
 
 
   var render = function(result) {
-    console.log('Hey');
-    var open = $('.in').attr('id');
-    console.log(result);
     $('#questions').html(template({questions : result}));
-    $('#' + open).addClass('in');
   };
 
   var ctrl = {

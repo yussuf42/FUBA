@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
+<head>  
+	<link rel="stylesheet" href="single.css">
+	<title>Question</title>
 	<script type="text/javascript">
 		var query = window.location.search.substring(1);
 	</script>
 </head>
 <body>
+	<div id="single_header"></div>
+	<div id="single_wrap_outer">
+	<div id="single_wrap">
+	<div id="single_headline">
+	<h1>FUBA - the new StackOverflow!!!</h1>
+		<p><h2>----- QUESTION ASKED: -----</h2></p>
+	</div>
+
+
+
 	<div id="single"></div>
 	<script id="single_template" type="text/x-handlebars-template">
 		{{#each single}}
@@ -19,17 +30,38 @@
 				<p>----------------------------------------------------</p>
 			</div>
 		</div>
-	</div>
 	{{/each}}
 
 </script>
+
+	<p><h2>----- PLEASE GIVE YOUR ANSWER NOW! -----</h2></p>
+
+<div id="single_answer">
+<div id="answer_container">
+	<form id="add_answer" onSubmit="return Submit_Answer();">
+		<div class="row">
+			<input required id="answer_username" type="text" placeholder="Type Your Username here!" value="" >
+		</div>
+		<div class="row">
+			<textarea value ="" required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!" >
+			</textarea>
+		</div>
+		<button id="answer_button" type="submit" onSubmit="Submit_Answer();">Submit Your Answer!</button>
+
+	</form>
+</div>
+</div>
+
+<div id="answers_headline">
+	<p><h2>----- GIVEN ANSWERS: -----</h2></p>
+</div>
 <div id="answers"></div>
 <script id="answer_template" type="text/x-handlebars-template">
 	{{#each answers}}
 	<div class="single_a_container">
 		<p>{{A_Giver}} answered at {{A_Date}} :</p>
 		<p>{{A_Text}}</p>
-		<p>----------------------------------------------------</p>
+
 	</div>
 </div>
 </div>
@@ -37,14 +69,6 @@
 
 </script>
 
-<div id="answer_container">
-	<form id="add_answer" onSubmit="return Submit_Answer();">
-		<div class="row">
-			<textarea required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!" >
-			</textarea>
-		</div>
-		<input type="submit">Submit Your Answer!</input>
-	</form>
 </div>
 
 <script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>

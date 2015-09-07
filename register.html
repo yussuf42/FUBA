@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FUBA - Register now for more AWSMNSS</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div id="stupid_msg"></div>
+<script id="stupid_area" type="text/x-handlebars-template">
+	<p>Hey there, you are already logged in as *TODO:USERNAME*. </br>
+	However, as we are totally cool with you having multiple accounts,</br>
+	you can register twice. (...or thrice, or twenty times or heck, do it all day!)</br>
+<a href="http://127.0.0.1:8050/index.html">
+	Go back to the Start Page if you like.
+	</a>
+</script>
+
+
+<div id="register_form">
+<form id="register" onsubmit="Register();">
+	<label class="reg_label">
+		Benutzername: 		
+	</label>
+	<input type="text" placeholder:"Name" id="reg_name">
+	<label class="reg_label">
+		Passwort:
+	</label>
+	<input type="text" placeholder:"Passwort" id="reg_pass">	
+	<button type="submit">
+		Registrieren
+	</button>
+</form>
+</div>
+
+
+	<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+	<script type="text/javascript" src="register.js"></script>
+</body>
+
+<script type="text/javascript">
+	function Register(){
+		var_user = $('#reg_name').val();
+		var_pass = $('#reg_pass').val();
+		RegisterController.register(var_user,var_pass);
+	}
+</script>
+
+
+
+
+</html>

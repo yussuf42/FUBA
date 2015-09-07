@@ -9,6 +9,23 @@
 
 
 <body>
+<div id='welcome'> </div>
+<div id="login"></div>
+<script id="user_area" type="text/x-handlebars-template">
+<form id="login_form" onSubmit="return Login();">
+<label class="login_label">Benutzername</label>
+  <input type="text" id="login_name"/>
+<label class="login_label">Passwort</label>
+  <input type="text" id="login_pass"/>
+  <button type="submit" id="login_button">Einloggen</button>
+</form>
+<form id="logout_form" onsubmit="return Logout();">
+  <button type="submit" id="logout_button">Ausloggen</button>
+</form>
+</script>
+
+
+
   <div id="landing_header">
     <div class="row">
       <h1>FUBA - the new StackOverflow!!!</h1>
@@ -18,9 +35,6 @@
   <div id="input_container">
     <div class="inner_container">
     <form id="add_question" onsubmit="Submit_Question();">
-      <div class="row">
-        <input required id="landing_username" type="text" placeholder="Type Your Username here!" value="" >
-      </div>
       <div class="row">
       <input type="text" required id="question_title_input" placeholder="Your Question Title" value="">
       </div>
@@ -53,14 +67,25 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="user.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
     
     <script type="text/javascript">
     function Submit_Question(){
-      var temp_user = $("#landing_username").val();
+      var temp_user = $("#landing_username").val(); //TODO
       var temp_title = $("#question_title_input").val();
       var temp_question = $("#landing_question").val();
       QuestionController.add(temp_user,temp_title,temp_question);
+    }
+
+    function Login(){
+      var temp_user = $('#login_name').val();
+      var temp_pass = $('#login_pass').val();
+      UserController.login(temp_user, temp_pass);
+    }
+
+    function Logout(){
+      UserController.logout();
     }
 
     </script>

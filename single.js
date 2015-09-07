@@ -59,7 +59,7 @@ var AnswerController = (function(){
       SingleService.showAnswers(query).then(render);
     },
     add: function(user, answer){
-      var temp_user = user;
+      var temp_user = DB.User.me.username;
       var temp_text = answer;
       var query = parseInt(window.location.search.substring(1));
       var temp_id = SingleService.count() + 101;
@@ -67,7 +67,7 @@ var AnswerController = (function(){
       var temp_answer = new DB.Answers({
         A_ID : temp_id,
         Q_ID : query,
-        A_Giver : user,
+        A_Giver : temp_user,
         A_Date : temp_date,
         A_Text : temp_text
       });

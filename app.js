@@ -20,7 +20,6 @@ var QuestionService= (function(){
 
 
 
-
 var QuestionController= (function() {
   var template;
 
@@ -38,7 +37,7 @@ var QuestionController= (function() {
       var temp_id = QuestionService.count + 1;
       var temp_date = new Date().getTime();
       var temp_question = new DB.Questions({
-        Q_Asker : user,
+        Q_Asker : DB.User.me.username,
         Q_Title : title,
         Q_Text : question,
         Q_ID : temp_id,
@@ -54,8 +53,12 @@ var QuestionController= (function() {
       ctrl.showAll();
     }
   };
+
+
   return ctrl;
 
 })();
+
+
 
 DB.ready(QuestionController.onReady);

@@ -26,8 +26,7 @@
 			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
 			<div class="single_q_text">
 				<p>{{Q_Text}}</p>
-				<p>----------------------------------------------------</p>
-				<p>----------------------------------------------------</p>
+
 			</div>
 		</div>
 	{{/each}}
@@ -43,7 +42,7 @@
 			<input required id="answer_username" type="text" placeholder="Type Your Username here!" value="" >
 		</div>
 		<div class="row">
-			<textarea value ="" required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!" >
+			<textarea  required maxlength="200" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!">
 			</textarea>
 		</div>
 		<button id="answer_button" type="submit" onSubmit="Submit_Answer();">Submit Your Answer!</button>

@@ -5,9 +5,8 @@
 
 #single_wrap_outer{
 	width: 100%;
-	background-color: #E0F0FF;
+	background-color: #3385FF;
 	border:  2px solid #000;
-    background-color: #E0F0FF;
     width: 980px;
     margin: 10px auto;
     padding: 10px;
@@ -26,7 +25,7 @@ h1{
     font-size: 36px;
     margin: 0 auto;
     width: 610px;
-    color: #0000FF;
+    color: black;
     margin-bottom: 25px;
 }
 
@@ -42,9 +41,8 @@ h2{
 #single_answer{
 
 	width: 100%;
-	background-color: #E0F0FF;
+	background-color: #E3E6EB;
 	border:  2px solid #000;
-    background-color: #E0F0FF;
     width: 775px;
     padding: 10px;
     margin-top: 25px;
@@ -52,13 +50,15 @@ h2{
 
 #answer_username{
 	display: block;
+    color: red;
     width: 300px;
     margin-bottom: 10px;
 }
 
 #answer_text{
-	display: block;
+    display: block;
     width: 400px;
+    color: red;
     margin-bottom: 10px;
 }
 
@@ -76,9 +76,8 @@ table, th, td {
 
 .single_q_container{
 	width: 100%;
-	background-color: #E0F0FF;
+	background-color: #E3E6EB;
 	border:  2px solid #000;
-    background-color: #E0F0FF;
     width: 775px;
     padding: 10px;
     margin-top: 25px;
@@ -86,9 +85,8 @@ table, th, td {
 
 .single_a_container{
 	width: 100%;
-	background-color: #E0F0FF;
+	background-color: #E3E6EB;
 	border:  2px solid #000;
-    background-color: #E0F0FF;
     width: 775px;
     padding: 10px;
     margin-top: 25px;

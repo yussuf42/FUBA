@@ -1,0 +1,95 @@
+#single_header{
+	height: 50px;
+	width:100%;
+}
+
+#single_wrap_outer{
+	width: 100%;
+	background-color: #E0F0FF;
+	border:  2px solid #000;
+    background-color: #E0F0FF;
+    width: 980px;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+#single_wrap{
+	margin: 0 auto;
+	width: 800px;
+}
+
+.single_q_container{
+}
+
+h1{
+    font-family: helvetica;
+    font-size: 36px;
+    margin: 0 auto;
+    width: 610px;
+    color: #0000FF;
+    margin-bottom: 25px;
+}
+
+h2{
+    font-family: helvetica;
+    font-size: 16px;
+    margin: 0 auto;
+    width: 800px;
+    color: black;
+    margin-bottom: 25px;
+}
+
+#single_answer{
+
+	width: 100%;
+	background-color: #E0F0FF;
+	border:  2px solid #000;
+    background-color: #E0F0FF;
+    width: 775px;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+#answer_username{
+	display: block;
+    width: 300px;
+    margin-bottom: 10px;
+}
+
+#answer_text{
+	display: block;
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+#answer_button{
+	color: blue;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.single_q_container{
+	width: 100%;
+	background-color: #E0F0FF;
+	border:  2px solid #000;
+    background-color: #E0F0FF;
+    width: 775px;
+    padding: 10px;
+    margin-top: 25px;
+}
+
+.single_a_container{
+	width: 100%;
+	background-color: #E0F0FF;
+	border:  2px solid #000;
+    background-color: #E0F0FF;
+    width: 775px;
+    padding: 10px;
+    margin-top: 25px;
+}

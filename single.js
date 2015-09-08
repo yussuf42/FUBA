@@ -58,7 +58,8 @@ var AnswerController = (function(){
     show: function(query){
       SingleService.showAnswers(query).then(render);
     },
-    add: function(user, answer){
+    add: function(answer){
+      SingleService.count().then(function(count){
       var temp_user = DB.User.me.username;
       var temp_text = answer;
       var query = parseInt(window.location.search.substring(1));
@@ -72,6 +73,9 @@ var AnswerController = (function(){
         A_Text : temp_text
       });
       SingleService.save(temp_answer);
+
+      });
+      alert("Thank you, Answer saved!")
     },
     onReady: function(){
       var source= $("#answer_template").html();

@@ -34,18 +34,20 @@ var QuestionController= (function() {
       QuestionService.all().then(render);
     },
     add: function(user,title, question){
-      var temp_id = QuestionService.count + 1;
+      QuestionService.count().then(function(count) {
+      count++;
       var temp_date = new Date().getTime();
       var temp_question = new DB.Questions({
         Q_Asker : DB.User.me.username,
         Q_Title : title,
         Q_Text : question,
-        Q_ID : temp_id,
+        Q_ID : count,
         Q_Date : temp_date
       });
       QuestionService.save(temp_question);
+      });
+        alert('Question saved, thank you!');
       render();
-
     },
     onReady: function() {
       var source= $("#question_template").html();

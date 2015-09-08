@@ -12,6 +12,14 @@
 	<p>Hey there, you are already logged in as *TODO:USERNAME*. </br>
 	However, as we are totally cool with you having multiple accounts,</br>
 	you can register twice. (...or thrice, or twenty times or heck, do it all day!)</br>
+	</br>
+	</br>
+	BUT, as we just learned our backend (err, sorry - baqend) doesn&apos;t like you registering when you&apos;re already logged in, you need to
+	logout first : </p> 
+	<form id="logout_form" onsubmit="return Logout();">
+  <button type="submit" id="logout_button">Ausloggen</button>
+</form>
+<p> ...or</p>
 <a href="http://127.0.0.1:8050/index.html">
 	Go back to the Start Page if you like.
 	</a>
@@ -19,15 +27,19 @@
 
 
 <div id="register_form">
-<form id="register" onsubmit="Register();">
+<form id="register" onsubmit="return Register();">
 	<label class="reg_label">
 		Benutzername: 		
 	</label>
-	<input type="text" placeholder:"Name" id="reg_name">
+	<input required type="text" placeholder:"Name" id="reg_name">
 	<label class="reg_label">
 		Passwort:
 	</label>
-	<input type="text" placeholder:"Passwort" id="reg_pass">	
+	<input required type="text" placeholder:"Passwort" id="reg_pass">	
+	<label class="reg_label">
+		Passwort erneut eingeben:
+	</label>
+	<input required type="text" placeholder:"Passwort" id="reg_pass_2">	
 	<button type="submit">
 		Registrieren
 	</button>
@@ -44,10 +56,19 @@
 
 <script type="text/javascript">
 	function Register(){
+
 		var_user = $('#reg_name').val();
 		var_pass = $('#reg_pass').val();
+		var_pass_2 = $('#reg_pass_2').val();
+		console.log(var_pass);
+		console.log(var_pass_2);
+		if (var_pass == var_pass_2)
 		RegisterController.register(var_user,var_pass);
+		return false;
 	}
+    function Logout(){
+      RegisterController.logout();
+    }
 </script>
 
 

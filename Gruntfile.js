@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/index.html': ['index.html'],
-          'dist/register.html': ['register.html']
+          'dist/register.html': ['register.html'],
           'dist/SingleQuestion.html': ['SingleQuestion.html']
         }
       },

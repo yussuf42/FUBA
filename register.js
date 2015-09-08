@@ -4,8 +4,10 @@ DB.connect("http://fuba.baqend.com");
 var RegisterService = (function(){
 	return{
 		register: function(user, password){
-			if(DB.User.register("herdfk@hark.de", "password"))
-				alert('42');
+			DB.User.register(user, password);
+		},
+		logout: function(){
+			DB.User.logout();
 		},
 		isLoggedin: function(){
 			if (DB.User.me) {
@@ -23,21 +25,24 @@ var RegisterController = (function(){
 	var template;
 
 	var render = function(result){
-		$('#stupid_area').html(template());
+		$('#stupid_msg').html(template());
 	};
 
 	var ctrl = {
 		register: function(user, password){
-			UserService.register(user,password).then(render);
+			RegisterService.register(user,password);
+		},
+		logout: function(){
+			RegisterService.logout();
 		},
 		onReady: function(){
-			if(!RegisterService.isLoggedin())
+			if(RegisterService.isLoggedin())
 				RegisterController.redirect();
 		},
 		redirect: function(){
-			var source = $('#stupid_msg').html();
-		    template = Handlebars.compile(source);
-		    render();
+			var source = $('#stupid_area').html();
+			template = Handlebars.compile(source);
+			render();
 		}
 	};
 	return ctrl;

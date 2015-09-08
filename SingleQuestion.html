@@ -34,14 +34,14 @@
 
 </script>
 
-	<p><h2>----- PLEASE GIVE YOUR ANSWER NOW! -----</h2></p>
 
+<div id="input_area">
+</div>
+<script id="inputs" type="text/x-handlebars-template">
+	<p><h2>----- PLEASE GIVE YOUR ANSWER NOW! -----</h2></p>
 <div id="single_answer">
 <div id="answer_container">
 	<form id="add_answer" onSubmit="return Submit_Answer();">
-		<div class="row">
-			<input required id="answer_username" type="text" placeholder="Type Your Username here!" value="" >
-		</div>
 		<div class="row">
 			<textarea value ="" required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!" >
 			</textarea>
@@ -51,6 +51,7 @@
 	</form>
 </div>
 </div>
+</script>
 
 <div id="answers_headline">
 	<p><h2>----- GIVEN ANSWERS: -----</h2></p>
@@ -76,13 +77,13 @@
 <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="single.js"></script>
 <script type="text/javascript" src="user.js"></script>
+<script type="text/javascript" src="input.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
 <script type="text/javascript">
 	function Submit_Answer(){
-		var temp_user = $("#answer_username").val();
 		var temp_answer = $("#answer_text").val();
-		AnswerController.add(temp_user,temp_answer);
+		AnswerController.add(temp_answer);
 		location.reload();
 		return false;
 	}

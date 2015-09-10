@@ -23,15 +23,23 @@
 	<input type="text" id="login_pass"/>
 	<button type="submit" id="login_button">Einloggen</button>
 </form>
-<form id="logout_form" onsubmit="return Logout();">
-	<button type="submit" id="logout_button">Ausloggen</button>
-</form>
-</script>
-
 <div id="register_link_wrap">
 	<a href="http://127.0.0.1:8050/register.html" style="color:#560000;font-size: 20px;">Register now!</a>
 </div>
+</script>
+
+
+<div id="logout"></div>
+<script id="logout_template" type="text/x-handlebars-template">
+<h1>Hello</h1>
+<form id="logout_form" onsubmit="return Logout();">
+  <button type="submit" id="logout_button">Ausloggen</button>
+</form>
+</script>
+
+
 </div>
+
 
 
 <div id="input_area" style="display:none;"></div>

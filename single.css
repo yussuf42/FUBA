@@ -92,3 +92,8 @@ table, th, td {
     padding: 10px;
     margin-top: 25px;
 }
+
+.title_link{
+    text-decoration: none;
+    color: #000;
+}

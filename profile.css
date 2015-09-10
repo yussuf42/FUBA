@@ -28,7 +28,7 @@
 .answer_container{
 	border: 2px solid red;
 	margin: 5px 5px;
-	padding: 0 5px ;
+	padding: 0 5px;
 }
 
 .section_link{
@@ -41,4 +41,9 @@
 	border: 2px solid orange;
 	padding: 5px;
 	margin: 5px 5px 5px 25px;
+}
+
+.title_link{
+	text-decoration: none;
+	color: #000;
 }

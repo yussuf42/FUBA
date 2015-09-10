@@ -18,3 +18,8 @@
 	background-color: #3385FF;
 	width:980px;
 }
+
+.title_link{
+	text-decoration: none;
+	color: #000;
+}

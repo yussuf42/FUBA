@@ -59,7 +59,7 @@ module.exports = function(grunt) {
     cssmin: {
       dist: {
         files: {
-          'dist/all.min.css': ['libs/css/*.css', 'style.css']
+          'dist/all.min.css': ['libs/css/*.css', 'main.css']
         }
       }
     },

@@ -1,0 +1,20 @@
+#register_form{
+	display: block;
+	background-color:#3385FF;
+	margin-right: auto;
+	margin-left: auto;
+	width:980px;
+	height: 50px;
+	padding-top: 30px;
+	border: 2px solid#000;
+
+}
+#stupid_msg{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	border: 2px solid#000;
+	margin-bottom: 10px;
+	background-color: #3385FF;
+	width:980px;
+}

@@ -3,8 +3,7 @@
     text-rendering: optimizeLegibility;
 }
 body{
-    ;
- }
+}
 
 h1{
     font-family: helvetica;
@@ -18,13 +17,21 @@ h1{
 .row{
 
     float: left;
-    width: 100%;   
+    width: 100%;
+}
+#logout_form{
+    float:right;
 }
 
 #landing_header{
-        margin: 0 auto;
+    margin: 0 auto;
     width: 800px;
 }
+#welcome{
+    margin-bottom: 7px;
+}
+#login{
+    margin-bottom: 15px;
 }
 
 #input_container{
@@ -60,12 +67,15 @@ h1{
 }
 
 #landing_question{
+
+    resize: none;
     display: block;
     margin-left: auto;
     margin-right: auto;
     min-height: 100px;
     max-height: 800px;
-     width: 400px;
+     width: 700px;
+     margin-bottom: 15px;
 
 }
 
@@ -74,7 +84,7 @@ h1{
 position:absolute; 
    margin-left: auto;
    margin-right: auto;
-   left: 50%;
+   left: 62%;
    width:200px;
 }
 
@@ -99,7 +109,7 @@ position:absolute;
  display: block;
     margin-left: auto;
     margin-right: auto;
-     width: 400px;
+     width: 700px;
      margin-bottom: 25px;
 
 }
@@ -121,3 +131,4 @@ position:absolute;
     margin: auto;
     padding: 10px;
 }
+

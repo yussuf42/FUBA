@@ -56,14 +56,15 @@ h2{
 }
 
 #answer_text{
+    resize: none;
     display: block;
     width: 400px;
-    color: red;
+    
     margin-bottom: 10px;
 }
 
 #answer_button{
-	color: blue;
+
 }
 
 table {

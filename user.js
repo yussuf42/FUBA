@@ -26,10 +26,16 @@ var UserService= (function(){
 
   var UserController= (function(){
     var template;
+    var logout_template;
+
+    var renderloggedin = function(result){
+    $('#logout').html(logout_template());
+    }
 
     var render = function(result){
     $('#login').html(template());  //TODO!!!!!
   };
+
   var ctrl = {
     login: function(user,password){
       UserService.login(user,password);
@@ -38,17 +44,20 @@ var UserService= (function(){
       UserService.logout();
     },
     onReady: function(){
-      var source = $('#user_area').html();
-      template = Handlebars.compile(source);
       if(UserService.isLoggedin()){
+        var logout_source = $('#logout_template').html();
+        logout_template = Handlebars.compile(logout_source);
         var temp = DB.User.me.username;
         $("#welcome").text('Hey ' + temp + ", wazzup?");
         UserService.welcome();
+        renderloggedin();
       }
       else{
+      var source = $('#user_area').html();
+      template = Handlebars.compile(source);
         $("#welcome").text('Hey Stupid, log in to use our site or else...');        
+        render();
       }
-      render();
       
     }
   };

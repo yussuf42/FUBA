@@ -17,6 +17,7 @@ var InputController= (function() {
 
   var render = function(result) {
     $('#input_area').html(template());
+    $('#input_area').css("display","block");
   };
 
   var ctrl = {

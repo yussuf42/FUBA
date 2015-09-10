@@ -10,7 +10,7 @@ h1{
     font-size: 36px;
     margin: auto;
     width: 610px;
-    color: #0000FF;
+    color: black;
     margin-bottom: 25px;
 }
 
@@ -86,7 +86,56 @@ position:absolute;
    margin-right: auto;
    left: 62%;
    width:200px;
-}
+  border-top: 1px solid #e6e6e6;
+   background: #e6e6e6;
+   background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#e6e6e6));
+   background: -webkit-linear-gradient(top, #e6e6e6, #e6e6e6);
+   background: -moz-linear-gradient(top, #e6e6e6, #e6e6e6);
+   background: -ms-linear-gradient(top, #e6e6e6, #e6e6e6);
+   background: -o-linear-gradient(top, #e6e6e6, #e6e6e6);
+   padding: 4px 8px;
+   -webkit-border-radius: 30px;
+   -moz-border-radius: 30px;
+   border-radius: 30px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 12px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #e6e6e6;
+   background: #e6e6e6;
+   color: #120912;
+   }
+.button:active {
+   border-top-color: #000000;
+   background: #000000;
+   }
+.button:hover {
+   border-top-color: #282978;
+   background: #282978;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
+.button:hover {
+   border-top-color: #282978;
+   background: #282978;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+
 
 #questions{
     border:  2px solid #000;

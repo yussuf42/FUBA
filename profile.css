@@ -1,0 +1,44 @@
+*{
+	
+}
+
+.username{
+	color: blue;
+	text-transform: uppercase;
+}
+
+.question_container{
+	border: 2px solid green;
+	margin: 5px 5px;
+	padding: 0 5px ;
+}
+
+#question_section{
+	border: 2px solid black;
+	margin: 5px 0;
+	padding: 10px 10px;
+}
+
+#answer_section{
+	border: 2px solid black;
+	margin: 5px 0;
+	padding: 10px;
+}
+
+.answer_container{
+	border: 2px solid red;
+	margin: 5px 5px;
+	padding: 0 5px ;
+}
+
+.section_link{
+	text-decoration: none;
+	color: #000;
+}
+
+.edit_question{
+	display: none;
+	border: 2px solid orange;
+	padding: 5px;
+	margin: 5px 5px 5px 25px;
+}

@@ -2,18 +2,104 @@
 <html>
 <head>
 	<title>Profile Page</title>
+	<link rel="stylesheet" type="text/css" href="profile.css">
 </head>
 <body>
 	<div id="landing_header"></div>
 	<h1>FUBA - the new StackOverflow!!!</h1>
 </div>
-
-<div id="profile_area"></div>
-<script id="inputs" type="text/x-handlebars-template">
+<div id="userinfo"></div>
+<script id="user_template" type="text/x-handlebars-template">
+	{{#each users}}
+	<p>Welcome <b class="username">{{username}}</b>, this is your personal Profile Page.</br>
+		Here, you can find links to your <a href="#question_section"><i>Questions</i></a> and <a href="#answer_section"><i>Answers</i></a> or even
+		edit them (much Wow, so functionality).
+	</p>
+	{{/each}}
 </script>
-	<div id="p_name">
-	<p>{{username}}</p>
-	</div>
+
+<section id="question_section">
+	<div id="questions"></div>
+	<script id="question_template" type="text/x-handlebars-template">
+		{{#each questions}}
+
+
+		<a class="section_link" href="/SingleQuestion.html?{{Q_ID}}">
+			<div id="Q{{Q_ID}}">
+				<div class="question_container">
+					<h4>On {{Q_Date}} you asked :</h4>
+					<h3>{{Q_Title}}</h3>
+					<p>{{Q_Text}}</p>
+				</div>
+			</a>
+
+
+			<div class="edit_question">
+				<p>You can edit your question here. However, keep in mind that this may result in a loss of consistency in the answers, so keep your edits kind of comprehensible. Thankee!
+				</p>
+				<form id="edit_{{Q_ID}}" onsubmit=" return save_changes({{Q_ID}});">
+					<div class="row">
+						<input class="edit_title" type="text" value="{{Q_Title}}"/>
+					</div>
+					<div class="row">
+						<textarea type="text" val="{{Q_Text}}" class="edit_text">{{Q_Text}}</textarea>
+					</div>
+					<button type="submit">Save Changes</button>
+				</form>
+			</div>
+			<div class="edit_link">
+				<form id="show_edit" onsubmit=" return show_edit({{Q_ID}});">
+					<button type="submit">Edit</button>
+				</form>
+			</div>
+		</div>
+		{{/each}}
+	</script>
+
+
+
+
+</section>
+<section id="answer_section">
+	<div id="answers"></div>
+	<script id="answer_template" type="text/x-handlebars-template">
+		{{#each answers}}
+		<div class="answer_container">
+			<p>You answered a <a href="/SingleQuestion.html?{{Q_ID}}">Question</a> cf. Q_Title !!!!!!TODO!!!!!</p>
+			<h5>Your Answer :</h5>
+			<p>{{A_Text}}</p>
+		</div>
+
+		{{/each}}
+	</script>
+</section>
+
+
+<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="profile.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+
+<script type="text/javascript">
+	function show_edit(Q_ID){
+		var b = "#Q".concat(Q_ID); 
+		var c = b.concat(" .edit_question");
+		$(c).css("display", "block");
+		var d = b.concat(" .edit_link");
+		$(d).css("display", "none");	
+		return false;
+	}
+
+	function save_changes(Q_ID){
+		var t = "#edit_".concat(Q_ID).concat(" .edit_title");
+		var title = $(t).val();
+		var u = "#edit_".concat(Q_ID).concat(" .edit_text");
+		var text = $(u).val();
+		ProfileController.updateQuestion(Q_ID, title, text);
+		return false;
+	}
+</script>
 
 </body>
 </html>

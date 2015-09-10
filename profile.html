@@ -64,12 +64,30 @@
 	<div id="answers"></div>
 	<script id="answer_template" type="text/x-handlebars-template">
 		{{#each answers}}
+		<a class="section_link" href="/SingleQuestion.html?{{Q_ID}}">
+		<div id="A{{Q_ID}}">
 		<div class="answer_container">
 			<p>You answered a <a href="/SingleQuestion.html?{{Q_ID}}">Question</a> cf. Q_Title !!!!!!TODO!!!!!</p>
 			<h5>Your Answer :</h5>
 			<p>{{A_Text}}</p>
 		</div>
+		</a>
 
+<div class="edit_answer">
+<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
+<form id="edit_a_{{Q_ID}}" onsubmit="return save_changes">
+<div class="row">
+<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
+</div>
+<button type="submit">Save Changes</button>
+</form>
+</div>
+<div class="edit_answer_link">
+<form id="show_answer_edit" onsubmit="return show_answer_edit({{Q_ID}});">
+<button type="submit">Edit</button>
+</form>
+</div>
+</div>
 		{{/each}}
 	</script>
 </section>
@@ -82,14 +100,21 @@
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
 <script type="text/javascript">
+/*	show_edit takes care of the edit-button for questions, so on click on the "edit"-button,
+*	the title-input and text-textarea show up and the edit link vanishes. 
+*	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!
+*
+*/
 	function show_edit(Q_ID){
-		var b = "#Q".concat(Q_ID); 
-		var c = b.concat(" .edit_question");
-		$(c).css("display", "block");
-		var d = b.concat(" .edit_link");
-		$(d).css("display", "none");	
+		var selector_temp = "#Q".concat(Q_ID); 
+		var selector_1 = selector_temp.concat(" .edit_question");
+		$(selector_1).css("display", "block");
+		var selector_2 = selector_temp.concat(" .edit_link");
+		$(selector_2).css("display", "none");	
 		return false;
 	}
+/*	save_changes saves the changes made in the edit-inputs above to the database
+*/
 
 	function save_changes(Q_ID){
 		var t = "#edit_".concat(Q_ID).concat(" .edit_title");
@@ -97,6 +122,21 @@
 		var u = "#edit_".concat(Q_ID).concat(" .edit_text");
 		var text = $(u).val();
 		ProfileController.updateQuestion(Q_ID, title, text);
+		return false;
+	}
+
+/*	show_answer_edit is the equivalent of show_edit for the answer-section
+*	As such, it even shares the same 	
+*	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!
+*
+*
+*/
+	function show_answer_edit(Q_ID){
+		var selector_temp = "#A".concat(Q_ID); 
+		var selector_1 = selector_temp.concat(" .edit_answer");
+		$(selector_1).css("display", "block");
+		var selector_2 = selector_temp.concat(" .edit_answer_link");
+		$(selector_2).css("display", "none");	
 		return false;
 	}
 </script>

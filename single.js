@@ -63,16 +63,18 @@ var AnswerController = (function(){
       var temp_user = DB.User.me.username;
       var temp_text = answer;
       var query = parseInt(window.location.search.substring(1));
-      var temp_id = SingleService.count() + 101;
+      SingleService.count().then(function(count){
+        count += 101;
       var temp_date = new Date().getTime();
       var temp_answer = new DB.Answers({
-        A_ID : temp_id,
+        A_ID : count,
         Q_ID : query,
         A_Giver : temp_user,
         A_Date : temp_date,
         A_Text : temp_text
       });
       SingleService.save(temp_answer);
+      });
 
       });
       alert("Thank you, Answer saved!")

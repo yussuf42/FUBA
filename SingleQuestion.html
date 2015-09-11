@@ -22,6 +22,7 @@
 	<script id="single_template" type="text/x-handlebars-template">
 		{{#each single}}
 		<div class="single_q_container">
+
 			<p> {{Q_Asker}} asked at {{Q_Date}}</p>
 			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
 			<div class="single_q_text">
@@ -29,9 +30,14 @@
 
 			</div>
 		</div>
+<form id="useless">
+	<input type="hidden" id="title_carrier" value="{{Q_Title}}">
+</form>
 	{{/each}}
 
 </script>
+
+
 
 
 <div id="input_area"></div>
@@ -71,7 +77,7 @@
 
 <script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="single.js"></script>
 <script type="text/javascript" src="user.js"></script>
 <script type="text/javascript" src="input.js"></script>
@@ -80,7 +86,8 @@
 <script type="text/javascript">
 	function Submit_Answer(){
 		var temp_answer = $("#answer_text").val();
-		AnswerController.add(temp_answer);
+		var temp_title = $('#title_carrier').val();
+		AnswerController.add(temp_answer, temp_title);
 		location.reload();
 		return false;
 	}

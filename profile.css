@@ -55,9 +55,10 @@ h1{
 
 .edit_question{
 	display: none;
-	border: 2px solid orange;
+	border: 3px solid lightyellow;
 	padding: 5px;
 	margin: 5px 5px 5px 25px;
+
 }
 
 .title_link{
@@ -75,4 +76,34 @@ h1{
 
 .edit_answer{
 	display: none;
+	border: 3px solid lightgreen;
+	padding: 5px;
+	margin: 5px 5px 5px 25px;
+
+}
+.edit_answer_text{
+	resize: none;
+    min-height: 100px;
+    max-height: 800px;
+     width: 700px;
+     margin-bottom: 15px;
+}
+
+.edit_text{
+		resize: none;
+    min-height: 100px;
+    max-height: 800px;
+     width: 700px;
+     margin-bottom: 15px;
+
+}
+
+.edit_title{
+		resize: none;
+     width: 350px;
+     margin-bottom: 15px;
+
+}
+#show_edit{
+	margin-left: 4px;
 }

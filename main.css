@@ -29,7 +29,7 @@ h1{
 }
 #welcome{
     margin-bottom: 7px;
-    margin-top: 10px;
+    margin-top: 6px;
     font-size: 18px;
 }
 #login{
@@ -43,11 +43,39 @@ h1{
 
 }
 
-#register_link_wrap{
-  margin-top: 8px;
-  color:#560000;
-  font-size: 20px;
-}
+
+#register_link_button{
+  float: left;
+       border-top: 1px solid #96d1f8;
+   background: #ffffff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+   background: -moz-linear-gradient(top, #ffffff, #ffffff);
+   background: -ms-linear-gradient(top, #ffffff, #ffffff);
+   background: -o-linear-gradient(top, #ffffff, #ffffff);
+   padding: 7px 14px;
+   -webkit-border-radius: 29px;
+   -moz-border-radius: 29px;
+   border-radius: 29px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #040508;
+   font-size: 13px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
 
 .inner_container{
     margin-left: auto;
@@ -124,25 +152,6 @@ position:absolute;
    border-top-color: #000000;
    background: #000000;
    }
-.button:hover {
-   border-top-color: #282978;
-   background: #282978;
-   color: #ccc;
-   }
-.button:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
-
-.button:hover {
-   border-top-color: #282978;
-   background: #282978;
-   color: #ccc;
-   }
-.button:active {
-   border-top-color: #1b435e;
-   background: #1b435e;
-   }
 
 
 #questions{
@@ -191,7 +200,7 @@ position:absolute;
     width: 980px;
     margin: auto;
     padding: 10px;
-    height: 90px;
+    height: 100px;
     font-size: 16px;
 }
 

@@ -44,6 +44,12 @@ var ProfileService = (function(){
 				return question.update();
 			})
 		},
+		update_answer: function(id, text){
+			return DB.Answers.load(id).then(function(answer){
+				answer.A_Text = text;
+				return answer.update();
+			})
+		}
 	}
 })();
 
@@ -78,10 +84,15 @@ var ProfileController= (function(){
 		updateQuestion: function(Q_ID, title, text){
 			ProfileService.get_real_id(Q_ID).then(function(id){
 				return ProfileService.update_question(id,title, text).then(function(){
-					return ctrl.showQuestions().then(renderquestions);
+					return ctrl.showQuestions();
 				});
 				});
 			
+		},
+		updateAnswer: function(id, text){
+			return ProfileService.update_answer(id, text).then(function(){
+				return ctrl.showAnswers();
+			});
 		},
 		onReady: function() {
 			var source= $("#question_template").html();

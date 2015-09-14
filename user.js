@@ -48,14 +48,14 @@ var UserService= (function(){
         var logout_source = $('#logout_template').html();
         logout_template = Handlebars.compile(logout_source);
         var temp = DB.User.me.username;
-        $("#welcome").text('Hey ' + temp + ", wazzup?");
+        $("#welcome").text('Hey ' + temp + ", have fun!");
         UserService.welcome();
         renderloggedin();
       }
       else{
       var source = $('#user_area').html();
       template = Handlebars.compile(source);
-        $("#welcome").text('Hey Stupid, log in to use our site or else...');        
+        $("#welcome").text('Hey Guest, please login or register.');        
         render();
       }
       

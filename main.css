@@ -253,9 +253,43 @@ h1{
  color: #ccc;
 }
 .button:active {
- border-top-color: #1b435e;
- background: #1b435e;
-}
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }
+   #profile_link_button{
+      float: left;
+       border-top: 1px solid #96d1f8;
+   background: #ffffff;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+   background: -moz-linear-gradient(top, #ffffff, #ffffff);
+   background: -ms-linear-gradient(top, #ffffff, #ffffff);
+   background: -o-linear-gradient(top, #ffffff, #ffffff);
+   padding: 7px 14px;
+   -webkit-border-radius: 29px;
+   -moz-border-radius: 29px;
+   border-radius: 29px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #040508;
+   font-size: 13px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   
+   }
+
 
 .single_q_textblock{
   padding: 0 0px 0 90px;
@@ -308,4 +342,10 @@ h1{
 .karma_number{
   text-align: center;
   width: 40px;
+}
+
+
+.edit_text{
+  font-style: italic;
+  font-size: 14px;
 }

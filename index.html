@@ -11,6 +11,7 @@
 	<div id="landing_header"></div>
 	<h1>FUBA - the new StackOverflow!!!</h1>
 </div>
+
 <div id="alpha_login">
 
 	<div id='welcome'> </div>
@@ -61,6 +62,39 @@
 	</div>
 </script>
 
+<h3>New Fucking Questions</h3>
+<div id="news"></div>
+<script id="news_template" type="text/x-handlebars-template">
+	{{#each news}}
+<div class="single_q_container">
+		<div class="karma_container">
+			<div class="row">
+				<a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
+			</div>
+			<div class="row">
+				<h3 class="karma_number">{{Karma}}</h3>
+			</div>
+			<div class="row">
+				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
+			</div>
+		</div>
+		<div class="single_q_textblock">
+			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
+			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<div class="single_q_text">
+				<p>{{Q_Text}}</p>
+				{{#if Edit_Date}}
+				<p class="edit_text">Last edited at {{Edit_Date}}</p>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</div>
+	{{/each}}
+</script>
+<h3>End of NFQ</h3>
+
+
 
 <div id="questions"></div>
 
@@ -99,9 +133,11 @@
 <script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="connect.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="user.js"></script>
 <script type="text/javascript" src="input.js"></script>
+<script type="text/javascript" src="news.js"></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
 <script type="text/javascript">

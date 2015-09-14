@@ -83,7 +83,7 @@
 					</a>
 
 					<div class="edit_answer">
-						<div>
+						<div class="form_container_fold">
 							<form id="fold_edit_{{id}}" onsubmit="return fold_answer_edit(id);"> 
 								<button type="submit" class="fold_edit"></a>
 									<input type="hidden" name="id" value="{{id}}" />
@@ -99,12 +99,12 @@
 
 							</form>
 						</div>
+						</div>
 						<div class="edit_answer_link">
 							<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
 								<input type="hidden" name="id" value="{{id}}" />
 								<button type="submit">Edit</button>
 							</form>
-						</div>
 					</div>
 					{{/each}}
 				</script>
@@ -113,6 +113,7 @@
 			<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
 			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 			<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="connect.js"></script>
 			<script type="text/javascript" src="profile.js"></script>
 			<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 

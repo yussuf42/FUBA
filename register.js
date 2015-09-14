@@ -1,6 +1,3 @@
-//Let's connect to our Baqend
-DB.connect("http://fuba.baqend.com");
-
 var RegisterService = (function(){
 	return{
 		register: function(user, password){

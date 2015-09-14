@@ -1,6 +1,3 @@
-//Let's connect to our Baqend
-DB.connect("http://fuba.baqend.com");
-
 var QuestionService= (function(){
   return{
     all: function(){
@@ -38,7 +35,14 @@ var QuestionService= (function(){
   }
 })();
 
-
+var HashService = (function(){
+  return{
+    createHash: function(title, date){
+      hash = title.concat(date.toString());
+      return hash;
+    },
+  }
+})();
 
 
 var QuestionController= (function() {
@@ -58,19 +62,22 @@ var QuestionController= (function() {
       QuestionService.count().then(function(count) {
       count++;
       var temp_date = new Date().getTime();
+      temp_hash = HashService.createHash(title,temp_date);
       var temp_question = new DB.Questions({
         Q_Asker : DB.User.me.username,
         Q_Title : title,
         Q_Text : question,
         Q_ID : count,
         Q_Date : temp_date,
-        Karma : 0
+        Karma : 0,
+        Q_hash : temp_hash
       });
       QuestionService.save(temp_question);
       });
         alert('Question saved, thank you!');
       render();
     },
+
     karmaplus: function(q_id){
       QuestionService.get_real_id(q_id).then(function(id){
         QuestionService.karmaplus(id).then(function(){
@@ -96,8 +103,8 @@ var QuestionController= (function() {
 
   return ctrl;
 
-})();
-
+})
+();
 
 
 DB.ready(QuestionController.onReady);

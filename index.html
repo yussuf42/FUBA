@@ -21,7 +21,7 @@
 	<input type="text" id="login_name"/>
 <label class="login_label">Passwort</label>
 	<input type="text" id="login_pass"/>
-	<button type="submit" id="login_button">Einloggen</button>
+	<button type="submit" id="login_button">Login</button>
 </form>
 <div id="register_link_wrap">
 	<a id="register_link_button" href="http://127.0.0.1:8050/register.html">Register now!</a>
@@ -31,9 +31,9 @@
 
 <div id="logout"></div>
 <script id="logout_template" type="text/x-handlebars-template">
-<a href="http://127.0.0.1:8050/profile.html">Get to Your personal Profile Page</a>
+<a id="profile_link_button" href="http://127.0.0.1:8050/profile.html">Get to Your personal Profile Page</a>
 <form id="logout_form" onSubmit="return Logout();">
-  <button type="submit" id="logout_button">Ausloggen</button>
+  <button type="submit" id="logout_button">Logout</button>
 </form>
 </script>
 

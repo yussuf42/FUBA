@@ -107,3 +107,14 @@ h1{
 #show_edit{
 	margin-left: 4px;
 }
+
+.fold_edit{
+	width: 0; 
+	height: 0; 
+	border-left: 20px solid transparent; 
+	border-right: 20px solid transparent; 
+	border-bottom: 40px solid red;
+	cursor: pointer;
+	float: left;
+	position: relative;
+}

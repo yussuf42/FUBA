@@ -30,90 +30,93 @@
 					<h4>On {{Q_Date}} you asked :</h4>
 					<h3>{{Q_Title}}</h3>
 					<p>{{Q_Text}}</p>
-				</div>
-			</a>
-
-
-			<div class="edit_question">
-						<div>
-			<form id="fold_edit_{{Q_ID}}" onsubmit="return fold_edit(id);"> 
-				<button type="submit" class="fold_edit"></a>
-				<input type="hidden" name="id" value="{{Q_ID}}" />
-				</form>
-				</div>
-				<p>You can edit your question here. However, keep in mind that this may result in a loss of consistency in the answers, so keep your edits kind of comprehensible. Thankee!
-				</p>
-				<form id="edit_{{Q_ID}}" onsubmit=" return save_changes({{Q_ID}});">
-					<div class="row">
-						<textarea type="text" val="{{Q_Text}}" class="edit_text">{{Q_Text}}</textarea>
-					</div>
-					<button type="submit">Save Changes</button>
-				</form>
-			</div>
-			<div class="edit_link">
-				<form id="show_edit" onsubmit=" return show_edit({{Q_ID}});">
-					<button type="submit">Edit</button>
-				</form>
-			</div>
-		</div>
-		{{/each}}
-	</script>
-
-
-
-
-</section>
-<section id="answer_section">
-	<div id="answers"></div>
-	<script id="answer_template" type="text/x-handlebars-template">
-		{{#each answers}}
-		<a class="section_link" href="/SingleQuestion.html?{{Q_ID}}">
-			<div id="A_{{id}}">
-				<div class="answer_container">
-					<p>You answered a Question cf. {{Q_Title}}</p>
-					<h5>Your Answer :</h5>
-					<p>{{A_Text}}</p
 					{{#if Edit_Date}}
 					<p>Last edited at {{Edit_Date}}</p>
 					{{/if}}
 				</div>
 			</a>
 
-			<div class="edit_answer">
-			<div>
-			<form id="fold_edit_{{id}}" onsubmit="return fold_answer_edit(id);"> 
-				<button type="submit" class="fold_edit"></a>
-				<input type="hidden" name="id" value="{{id}}" />
-				</form>
-				</div>
-				<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
-				<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
-					<div class="row">
-						<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
+
+			<div class="edit_question">
+				<div>
+					<form id="fold_edit_{{Q_ID}}" onsubmit="return fold_edit(id);"> 
+						<button type="submit" class="fold_edit"></a>
+							<input type="hidden" name="id" value="{{Q_ID}}" />
+						</form>
 					</div>
-					<input type="hidden" name="id" value="{{id}}" />
-					<button type="submit">Save Changes</button>
-
-				</form>
+					<p>You can edit your question here. However, keep in mind that this may result in a loss of consistency in the answers, so keep your edits kind of comprehensible. Thankee!
+					</p>
+					<form id="edit_{{Q_ID}}" onsubmit=" return save_changes({{Q_ID}});">
+						<div class="row">
+							<textarea type="text" val="{{Q_Text}}" class="edit_text">{{Q_Text}}</textarea>
+						</div>
+						<button type="submit">Save Changes</button>
+					</form>
+				</div>
+				<div class="edit_link">
+					<form id="show_edit" onsubmit=" return show_edit({{Q_ID}});">
+						<button type="submit">Edit</button>
+					</form>
+				</div>
 			</div>
-			<div class="edit_answer_link">
-				<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
-					<input type="hidden" name="id" value="{{id}}" />
-					<button type="submit">Edit</button>
-				</form>
-			</div>
-		</div>
-		{{/each}}
-	</script>
-</section>
+			{{/each}}
+		</script>
 
-<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="profile.js"></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
-<script type="text/javascript">
+
+
+	</section>
+	<section id="answer_section">
+		<div id="answers"></div>
+		<script id="answer_template" type="text/x-handlebars-template">
+			{{#each answers}}
+			<a class="section_link" href="/SingleQuestion.html?{{Q_ID}}">
+				<div id="A_{{id}}">
+					<div class="answer_container">
+						<p>You answered a Question cf. {{Q_Title}}</p>
+						<h5>Your Answer :</h5>
+						<p>{{A_Text}}</p
+							{{#if Edit_Date}}
+							<p>Last edited at {{Edit_Date}}</p>
+							{{/if}}
+						</div>
+					</a>
+
+					<div class="edit_answer">
+						<div>
+							<form id="fold_edit_{{id}}" onsubmit="return fold_answer_edit(id);"> 
+								<button type="submit" class="fold_edit"></a>
+									<input type="hidden" name="id" value="{{id}}" />
+								</form>
+							</div>
+							<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
+							<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
+								<div class="row">
+									<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
+								</div>
+								<input type="hidden" name="id" value="{{id}}" />
+								<button type="submit">Save Changes</button>
+
+							</form>
+						</div>
+						<div class="edit_answer_link">
+							<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
+								<input type="hidden" name="id" value="{{id}}" />
+								<button type="submit">Edit</button>
+							</form>
+						</div>
+					</div>
+					{{/each}}
+				</script>
+			</section>
+
+			<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
+			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="profile.js"></script>
+			<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+
+			<script type="text/javascript">
 /*	show_edit takes care of the edit-button for questions, so on click on the "edit"-button,
 *	the title-input and text-textarea show up and the edit link vanishes. 
 *	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!

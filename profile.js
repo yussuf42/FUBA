@@ -40,6 +40,7 @@ var ProfileService = (function(){
 		update_question: function(id, text){
 			return DB.Questions.load(id).then(function(question){
 				question.Q_Text = text;
+				question.Edit_Date = new Date().getTime();
 				return question.update();
 			})
 		},

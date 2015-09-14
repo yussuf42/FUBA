@@ -35,12 +35,15 @@
 
 
 			<div class="edit_question">
+						<div>
+			<form id="fold_edit_{{Q_ID}}" onsubmit="return fold_edit(id);"> 
+				<button type="submit" class="fold_edit"></a>
+				<input type="hidden" name="id" value="{{Q_ID}}" />
+				</form>
+				</div>
 				<p>You can edit your question here. However, keep in mind that this may result in a loss of consistency in the answers, so keep your edits kind of comprehensible. Thankee!
 				</p>
 				<form id="edit_{{Q_ID}}" onsubmit=" return save_changes({{Q_ID}});">
-					<div class="row">
-						<input class="edit_title" type="text" value="{{Q_Title}}"/>
-					</div>
 					<div class="row">
 						<textarea type="text" val="{{Q_Text}}" class="edit_text">{{Q_Text}}</textarea>
 					</div>
@@ -69,13 +72,16 @@
 				<div class="answer_container">
 					<p>You answered a Question cf. {{Q_Title}}</p>
 					<h5>Your Answer :</h5>
-					<p>{{A_Text}}</p>
+					<p>{{A_Text}}</p
+					{{#if Edit_Date}}
+					<p>Last edited at {{Edit_Date}}</p>
+					{{/if}}
 				</div>
 			</a>
 
 			<div class="edit_answer">
 			<div>
-			<form id="fold_edit_{{id}}" onsubmit="return fold_edit(id);"> 
+			<form id="fold_edit_{{id}}" onsubmit="return fold_answer_edit(id);"> 
 				<button type="submit" class="fold_edit"></a>
 				<input type="hidden" name="id" value="{{id}}" />
 				</form>
@@ -125,11 +131,9 @@ function show_edit(Q_ID){
 */
 
 function save_changes(Q_ID){
-	var t = "#edit_".concat(Q_ID).concat(" .edit_title");
-	var title = $(t).val();
 	var u = "#edit_".concat(Q_ID).concat(" .edit_text");
 	var text = $(u).val();
-	ProfileController.updateQuestion(Q_ID, title, text);
+	ProfileController.updateQuestion(Q_ID, text);
 	return false;
 }
 
@@ -155,11 +159,20 @@ function update_answer(id){
 	return false;
 }
 
-function fold_edit(id){
+function fold_answer_edit(id){
 	var selector_temp = "#A_".concat(id.value); 
 	var selector_1 = selector_temp.concat(" .edit_answer");
 	$(selector_1).css("display", "none");
 	var selector_2 = selector_temp.concat(" .edit_answer_link");
+	$(selector_2).css("display", "block");	
+	return false;
+}
+
+function fold_edit(id){
+	var selector_temp = "#Q".concat(id.value); 
+	var selector_1 = selector_temp.concat(" .edit_question");
+	$(selector_1).css("display", "none");
+	var selector_2 = selector_temp.concat(" .edit_link");
 	$(selector_2).css("display", "block");	
 	return false;
 }

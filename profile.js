@@ -37,9 +37,8 @@ var ProfileService = (function(){
 				return result.id;
 			});
 		},
-		update_question: function(id, title, text){
+		update_question: function(id, text){
 			return DB.Questions.load(id).then(function(question){
-				question.Q_Title = title;
 				question.Q_Text = text;
 				return question.update();
 			})
@@ -47,6 +46,7 @@ var ProfileService = (function(){
 		update_answer: function(id, text){
 			return DB.Answers.load(id).then(function(answer){
 				answer.A_Text = text;
+				answer.Edit_Date = new Date().getTime(); 
 				return answer.update();
 			})
 		}
@@ -81,9 +81,9 @@ var ProfileController= (function(){
 		showAnswers: function(){
 			ProfileService.answers().then(renderanswers);
 		},
-		updateQuestion: function(Q_ID, title, text){
+		updateQuestion: function(Q_ID, text){
 			ProfileService.get_real_id(Q_ID).then(function(id){
-				return ProfileService.update_question(id,title, text).then(function(){
+				return ProfileService.update_question(id, text).then(function(){
 					return ctrl.showQuestions();
 				});
 				});

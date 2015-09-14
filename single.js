@@ -11,7 +11,8 @@ var SingleService= (function(){
     showAnswers: function(query){
       return DB.Answers.find()
       .equal('Q_ID', query)
-      .resultList();
+      .descending('Karma')
+      .resultList()
     },
     count: function(){
       return DB.Answers.find()
@@ -58,7 +59,7 @@ var AnswerController = (function(){
     show: function(query){
       SingleService.showAnswers(query).then(render);
     },
-    add: function(answer){
+    add: function(answer, title){
       SingleService.count().then(function(count){
       var temp_user = DB.User.me.username;
       var temp_text = answer;
@@ -71,7 +72,9 @@ var AnswerController = (function(){
         Q_ID : query,
         A_Giver : temp_user,
         A_Date : temp_date,
-        A_Text : temp_text
+        A_Text : temp_text,
+        Q_Title : title,
+        Karma : 0
       });
       SingleService.save(temp_answer);
       });

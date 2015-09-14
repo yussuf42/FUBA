@@ -35,12 +35,15 @@
 
 
 			<div class="edit_question">
+						<div>
+			<form id="fold_edit_{{Q_ID}}" onsubmit="return fold_edit(id);"> 
+				<button type="submit" class="fold_edit"></a>
+				<input type="hidden" name="id" value="{{Q_ID}}" />
+				</form>
+				</div>
 				<p>You can edit your question here. However, keep in mind that this may result in a loss of consistency in the answers, so keep your edits kind of comprehensible. Thankee!
 				</p>
 				<form id="edit_{{Q_ID}}" onsubmit=" return save_changes({{Q_ID}});">
-					<div class="row">
-						<input class="edit_title" type="text" value="{{Q_Title}}"/>
-					</div>
 					<div class="row">
 						<textarea type="text" val="{{Q_Text}}" class="edit_text">{{Q_Text}}</textarea>
 					</div>
@@ -65,32 +68,41 @@
 	<script id="answer_template" type="text/x-handlebars-template">
 		{{#each answers}}
 		<a class="section_link" href="/SingleQuestion.html?{{Q_ID}}">
-		<div id="A_{{id}}">
-		<div class="answer_container">
-			<p>You answered a Question cf. {{Q_Title}}</p>
-			<h5>Your Answer :</h5>
-			<p>{{A_Text}}</p>
+			<div id="A_{{id}}">
+				<div class="answer_container">
+					<p>You answered a Question cf. {{Q_Title}}</p>
+					<h5>Your Answer :</h5>
+					<p>{{A_Text}}</p
+					{{#if Edit_Date}}
+					<p>Last edited at {{Edit_Date}}</p>
+					{{/if}}
+				</div>
+			</a>
+
+			<div class="edit_answer">
+			<div>
+			<form id="fold_edit_{{id}}" onsubmit="return fold_answer_edit(id);"> 
+				<button type="submit" class="fold_edit"></a>
+				<input type="hidden" name="id" value="{{id}}" />
+				</form>
+				</div>
+				<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
+				<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
+					<div class="row">
+						<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
+					</div>
+					<input type="hidden" name="id" value="{{id}}" />
+					<button type="submit">Save Changes</button>
+
+				</form>
+			</div>
+			<div class="edit_answer_link">
+				<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
+					<input type="hidden" name="id" value="{{id}}" />
+					<button type="submit">Edit</button>
+				</form>
+			</div>
 		</div>
-		</a>
-
-<div class="edit_answer">
-<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
-<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
-<div class="row">
-<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
-</div>
-<input type="hidden" name="id" value="{{id}}" />
-<button type="submit">Save Changes</button>
-
-</form>
-</div>
-<div class="edit_answer_link">
-<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
-<input type="hidden" name="id" value="{{id}}" />
-<button type="submit">Edit</button>
-</form>
-</div>
-</div>
 		{{/each}}
 	</script>
 </section>
@@ -107,25 +119,23 @@
 *	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!
 *
 */
-	function show_edit(Q_ID){
-		var selector_temp = "#Q".concat(Q_ID); 
-		var selector_1 = selector_temp.concat(" .edit_question");
-		$(selector_1).css("display", "block");
-		var selector_2 = selector_temp.concat(" .edit_link");
-		$(selector_2).css("display", "none");	
-		return false;
-	}
+function show_edit(Q_ID){
+	var selector_temp = "#Q".concat(Q_ID); 
+	var selector_1 = selector_temp.concat(" .edit_question");
+	$(selector_1).css("display", "block");
+	var selector_2 = selector_temp.concat(" .edit_link");
+	$(selector_2).css("display", "none");	
+	return false;
+}
 /*	save_changes saves the changes made in the edit-inputs above to the database
 */
 
-	function save_changes(Q_ID){
-		var t = "#edit_".concat(Q_ID).concat(" .edit_title");
-		var title = $(t).val();
-		var u = "#edit_".concat(Q_ID).concat(" .edit_text");
-		var text = $(u).val();
-		ProfileController.updateQuestion(Q_ID, title, text);
-		return false;
-	}
+function save_changes(Q_ID){
+	var u = "#edit_".concat(Q_ID).concat(" .edit_text");
+	var text = $(u).val();
+	ProfileController.updateQuestion(Q_ID, text);
+	return false;
+}
 
 /*	show_answer_edit is the equivalent of show_edit for the answer-section
 *	As such, it even shares the same 	
@@ -133,21 +143,40 @@
 *
 *
 */
-	function show_answer_edit(id){
-		var selector_temp = "#A_".concat(id.value); 
-		var selector_1 = selector_temp.concat(" .edit_answer");
-		$(selector_1).css("display", "block");
-		var selector_2 = selector_temp.concat(" .edit_answer_link");
-		$(selector_2).css("display", "none");	
-		return false;
-	}
+function show_answer_edit(id){
+	var selector_temp = "#A_".concat(id.value); 
+	var selector_1 = selector_temp.concat(" .edit_answer");
+	$(selector_1).css("display", "block");
+	var selector_2 = selector_temp.concat(" .edit_answer_link");
+	$(selector_2).css("display", "none");	
+	return false;
+}
 
-	function update_answer(id){
-		var u = "#edit_a_".concat(id.value).concat(" .edit_answer_text");
-		var text = $(u).val();
-		ProfileController.updateAnswer(id.value, text);
-		return false;
-	}
+function update_answer(id){
+	var u = "#edit_a_".concat(id.value).concat(" .edit_answer_text");
+	var text = $(u).val();
+	ProfileController.updateAnswer(id.value, text);
+	return false;
+}
+
+function fold_answer_edit(id){
+	var selector_temp = "#A_".concat(id.value); 
+	var selector_1 = selector_temp.concat(" .edit_answer");
+	$(selector_1).css("display", "none");
+	var selector_2 = selector_temp.concat(" .edit_answer_link");
+	$(selector_2).css("display", "block");	
+	return false;
+}
+
+function fold_edit(id){
+	var selector_temp = "#Q".concat(id.value); 
+	var selector_1 = selector_temp.concat(" .edit_question");
+	$(selector_1).css("display", "none");
+	var selector_2 = selector_temp.concat(" .edit_link");
+	$(selector_2).css("display", "block");	
+	return false;
+}
+
 
 </script>
 

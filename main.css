@@ -1,31 +1,31 @@
 *{
-    font-family: arial, helvetica, Sans-Serif;
-    text-rendering: optimizeLegibility;
+  font-family: arial, helvetica, Sans-Serif;
+  text-rendering: optimizeLegibility;
 }
 body{
 }
 
 h1{
-    font-family: helvetica;
-    font-size: 36px;
-    margin: auto;
-    width: 610px;
-    color: black;
-    margin-bottom: 25px;
+  font-family: helvetica;
+  font-size: 36px;
+  margin: auto;
+  width: 610px;
+  color: black;
+  margin-bottom: 25px;
 }
 
 .row{
 
-    float: left;
-    width: 100%;
+  float: left;
+  width: 100%;
 }
 #logout_form{
-    float:right;
+  float:right;
 }
 
 #landing_header{
-    margin: 0 auto;
-    width: 800px;
+  margin: 0 auto;
+  width: 800px;
 }
 #welcome{
     margin-bottom: 7px;
@@ -33,13 +33,13 @@ h1{
     font-size: 18px;
 }
 #login{
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 #input_container{
  display: block;
-    margin-left: auto;
-    margin-right: auto;
+ margin-left: auto;
+ margin-right: auto;
 
 }
 
@@ -78,116 +78,136 @@ h1{
    }
 
 .inner_container{
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 
 } 
 #input_area{
-   width: 100%;
-    background-color: #3385FF;
-    border:  2px solid #000;
-    width: 980px;
-    padding: 10px;
-    margin-top: 10px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
+ width: 100%;
+ background-color: #3385FF;
+ border:  2px solid #000;
+ width: 980px;
+ padding: 10px;
+ margin-top: 10px;
+ height: 200px;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 #landing_username{
   display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px;
-    margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  margin-bottom: 10px;
 }
 
 #landing_question{
 
-    resize: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 100px;
-    max-height: 800px;
-     width: 700px;
-     margin-bottom: 15px;
+  resize: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100px;
+  max-height: 800px;
+  width: 700px;
+  margin-bottom: 15px;
 
 }
 
 #question_button{
 
-position:absolute; 
-   margin-left: auto;
-   margin-right: auto;
-   left: 62%;
-   width:200px;
+  position:absolute; 
+  margin-left: auto;
+  margin-right: auto;
+  left: 62%;
+  width:200px;
   border-top: 1px solid #e6e6e6;
-   background: #e6e6e6;
-   background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#e6e6e6));
-   background: -webkit-linear-gradient(top, #e6e6e6, #e6e6e6);
-   background: -moz-linear-gradient(top, #e6e6e6, #e6e6e6);
-   background: -ms-linear-gradient(top, #e6e6e6, #e6e6e6);
-   background: -o-linear-gradient(top, #e6e6e6, #e6e6e6);
-   padding: 4px 8px;
-   -webkit-border-radius: 30px;
-   -moz-border-radius: 30px;
-   border-radius: 30px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #000000;
-   font-size: 12px;
-   font-family: Helvetica, Arial, Sans-Serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
+  background: #e6e6e6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#e6e6e6));
+  background: -webkit-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background: -moz-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background: -ms-linear-gradient(top, #e6e6e6, #e6e6e6);
+  background: -o-linear-gradient(top, #e6e6e6, #e6e6e6);
+  padding: 4px 8px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+  box-shadow: rgba(0,0,0,1) 0 1px 0;
+  text-shadow: rgba(0,0,0,.4) 0 1px 0;
+  color: #000000;
+  font-size: 12px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle;
+}
 .button:hover {
-   border-top-color: #e6e6e6;
-   background: #e6e6e6;
-   color: #120912;
-   }
+ border-top-color: #e6e6e6;
+ background: #e6e6e6;
+ color: #120912;
+}
 .button:active {
-   border-top-color: #000000;
-   background: #000000;
-   }
+ border-top-color: #000000;
+ background: #000000;
+}
+.button:hover {
+ border-top-color: #282978;
+ background: #282978;
+ color: #ccc;
+}
+.button:active {
+ border-top-color: #1b435e;
+ background: #1b435e;
+}
+
+.button:hover {
+ border-top-color: #282978;
+ background: #282978;
+ color: #ccc;
+}
+.button:active {
+ border-top-color: #1b435e;
+ background: #1b435e;
+}
+
 
 
 #questions{
-    border:  2px solid #000;
-    background-color: #3385FF;
-    width: 980px;
-    margin: 10px auto;
-    padding: 10px;
+  border:  2px solid #000;
+  background-color: #3385FF;
+  width: 980px;
+  margin: 10px auto;
+  padding: 10px;
 }
 .single_q_container{
-    margin: 10px 0;
-    width: 100%;
-    background-color: #E3E6EB;
-    border:  2px solid #000;
-    width: 955px;
-    padding: 10px;
-    margin-top: 25px;
+  margin: 10px 0;
+  width: 100%;
+  background-color: #E3E6EB;
+  border:  2px solid #000;
+  width: 955px;
+  padding: 10px;
+  margin-top: 25px;
 }
 
 #question_title_input{
  display: block;
-    margin-left: auto;
-    margin-right: auto;
-     width: 700px;
-     margin-bottom: 25px;
+ margin-left: auto;
+ margin-right: auto;
+ width: 700px;
+ margin-bottom: 25px;
 
 }
 #button_wrapper{
-    width: 200px;
+  width: 200px;
 
 }
 
 .fullwidth{
-    width: 100%;
-    height: 50px;
-     
+  width: 100%;
+  height: 50px;
+
 }
 
 #logout{
@@ -207,31 +227,31 @@ position:absolute;
 
 #logout_button{
  border-top: 1px solid #96d1f8;
-   background: #ffffff;
-   background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
-   background: -webkit-linear-gradient(top, #ffffff, #ffffff);
-   background: -moz-linear-gradient(top, #ffffff, #ffffff);
-   background: -ms-linear-gradient(top, #ffffff, #ffffff);
-   background: -o-linear-gradient(top, #ffffff, #ffffff);
-   padding: 10px 20px;
-   -webkit-border-radius: 29px;
-   -moz-border-radius: 29px;
-   border-radius: 29px;
-   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-   box-shadow: rgba(0,0,0,1) 0 1px 0;
-   text-shadow: rgba(0,0,0,.4) 0 1px 0;
-   color: #000000;
-   font-size: 13px;
-   font-family: Helvetica, Arial, Sans-Serif;
-   text-decoration: none;
-   vertical-align: middle;
-   }
+ background: #ffffff;
+ background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+ background: -webkit-linear-gradient(top, #ffffff, #ffffff);
+ background: -moz-linear-gradient(top, #ffffff, #ffffff);
+ background: -ms-linear-gradient(top, #ffffff, #ffffff);
+ background: -o-linear-gradient(top, #ffffff, #ffffff);
+ padding: 10px 20px;
+ -webkit-border-radius: 29px;
+ -moz-border-radius: 29px;
+ border-radius: 29px;
+ -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+ -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+ box-shadow: rgba(0,0,0,1) 0 1px 0;
+ text-shadow: rgba(0,0,0,.4) 0 1px 0;
+ color: #000000;
+ font-size: 13px;
+ font-family: Helvetica, Arial, Sans-Serif;
+ text-decoration: none;
+ vertical-align: middle;
+}
 .button:hover {
-   border-top-color: #28597a;
-   background: #28597a;
-   color: #ccc;
-   }
+ border-top-color: #28597a;
+ background: #28597a;
+ color: #ccc;
+}
 .button:active {
    border-top-color: #1b435e;
    background: #1b435e;
@@ -269,3 +289,58 @@ position:absolute;
    background: #1b435e;
    
    }
+
+
+.single_q_textblock{
+  padding: 0 0px 0 90px;
+  position: relative;
+  width: 900px;
+}
+
+.karma_number{
+  float: left;
+  margin: 0px 0 0 0;
+  position: relative;
+  float: left;
+}
+
+.karma_plus{
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent; 
+  border-right: 20px solid transparent; 
+  border-bottom: 30px solid grey;
+  position: relative;
+  float: left;
+  margin: 0 0 10px 0px;
+  z-index: 1;
+}
+
+.karma_plus:hover, .karma_minus:hover{
+  cursor: pointer;
+}
+
+.karma_minus{
+  z-index: 1;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent; 
+  border-right: 20px solid transparent; 
+  border-top: 30px solid grey;
+  float: left;
+  position: relative;
+  margin: 10px 0 0 0px;
+}
+
+.karma_container{
+  float: left;
+  margin-left: 20px;
+  width: 60px;
+  min-height: 120px;
+}
+
+.karma_number{
+  text-align: center;
+  width: 40px;
+}
+

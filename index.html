@@ -3,7 +3,7 @@
 <head>
 	<title>FUBA - the new StackOverflow!!!</title>
 	<link rel="stylesheet" href="main.css">
-
+<link rel="stylesheet" href="libs/css/fonts/font-awesome.min.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 <label class="login_label">Benutzername</label>
 	<input type="text" id="login_name"/>
 <label class="login_label">Passwort</label>
-	<input type="text" id="login_pass"/>
+	<input type="password" id="login_pass"/>
 	<button type="submit" id="login_button">Login</button>
 </form>
 <div id="register_link_wrap">
@@ -65,16 +65,28 @@
 <div id="questions"></div>
 
 
-
 	<script id="question_template" type="text/x-handlebars-template">
 
 			{{#each questions}}
 			<div class="single_q_container">
+      <div class="karma_container">
+      <div class="row">
+      <a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
+      </div>
+      <div class="row">
+      <h3 class="karma_number">{{Karma}}</h3>
+      </div>
+      <div class="row">
+      <a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
+      </div>
+      </div>
+      <div class="single_q_textblock">
 				<p> {{Q_Asker}} posted at {{Q_Date}}</p>
 				<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
 				<div class="single_q_text">
 					<p>{{Q_Text}}</p>
 				</div>
+        </div>
 			</div>
 		</div>
 		{{/each}}
@@ -106,6 +118,14 @@
 		function Logout(){
 			UserController.logout();
 		}
+
+    function karma_plus(id){
+      QuestionController.karmaplus(id);
+    }
+
+    function karma_minus(id){
+      QuestionController.karmaminus(id);
+    }
 
 		</script>
 

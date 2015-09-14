@@ -8,70 +8,72 @@
 	</script>
 </head>
 <body>
-<a class="title_link" href="http://127.0.0.1:8050/index.html"><h1>FUBA - the new StackOverflow!!!</h1></a>
+	<a class="title_link" href="http://127.0.0.1:8050/index.html"><h1>FUBA - the new StackOverflow!!!</h1></a>
 	<div id="single_wrap_outer">
-	<div id="single_wrap">
-	<div id="single_headline">
+		<div id="single_wrap">
+			<div id="single_headline">
 
-		<p><h2>----- QUESTION ASKED: -----</h2></p>
-	</div>
+				<p><h2>----- QUESTION ASKED: -----</h2></p>
+			</div>
 
 
 
-	<div id="single"></div>
-	<script id="single_template" type="text/x-handlebars-template">
-		{{#each single}}
-		<div class="single_q_container">
+			<div id="single"></div>
+			<script id="single_template" type="text/x-handlebars-template">
+				{{#each single}}
+				<div class="single_q_container">
 
-			<p> {{Q_Asker}} asked at {{Q_Date}}</p>
-			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
-			<div class="single_q_text">
-				<p>{{Q_Text}}</p>
+					<p> {{Q_Asker}} asked at {{Q_Date}}</p>
+					<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+					<div class="single_q_text">
+						<p>{{Q_Text}}</p>
 
+					</div>
+				</div>
+				<form id="useless">
+					<input type="hidden" id="title_carrier" value="{{Q_Title}}">
+				</form>
+				{{/each}}
+
+			</script>
+
+
+
+
+			<div id="input_area"></div>
+			<script id="inputs" type="text/x-handlebars-template">
+				<p><h2>----- PLEASE GIVE YOUR ANSWER NOW! -----</h2></p>
+				<div id="single_answer">
+					<div id="answer_container">
+						<form id="add_answer" onSubmit="return Submit_Answer();">
+							<div class="row">
+								<textarea value ="" required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!"></textarea>
+							</div>
+							<button id="answer_button" type="submit" onSubmit="Submit_Answer();">Submit Your Answer!</button>
+
+						</form>
+					</div>
+				</div>
+			</script>
+
+			<div id="answers_headline">
+				<p><h2>----- GIVEN ANSWERS: -----</h2></p>
+			</div>
+			<div id="answers"></div>
+			<script id="answer_template" type="text/x-handlebars-template">
+				{{#each answers}}
+				<div class="single_a_container">
+					<p>{{A_Giver}} answered at {{A_Date}} :</p>
+					<p>{{A_Text}}</p>
+					{{#if Edit_Date}}
+					<p>Last edited at {{Edit_Date}}</p>
+					{{/if}}
+				</div>
 			</div>
 		</div>
-<form id="useless">
-	<input type="hidden" id="title_carrier" value="{{Q_Title}}">
-</form>
-	{{/each}}
+		{{/each}}
 
-</script>
-
-
-
-
-<div id="input_area"></div>
-<script id="inputs" type="text/x-handlebars-template">
-	<p><h2>----- PLEASE GIVE YOUR ANSWER NOW! -----</h2></p>
-<div id="single_answer">
-<div id="answer_container">
-	<form id="add_answer" onSubmit="return Submit_Answer();">
-		<div class="row">
-			<textarea value ="" required maxlength:"2000" rows:"200" id="answer_text" type="text" value="" placeholder="Type Your Answer here!"></textarea>
-		</div>
-		<button id="answer_button" type="submit" onSubmit="Submit_Answer();">Submit Your Answer!</button>
-
-	</form>
-</div>
-</div>
-</script>
-
-<div id="answers_headline">
-	<p><h2>----- GIVEN ANSWERS: -----</h2></p>
-</div>
-<div id="answers"></div>
-<script id="answer_template" type="text/x-handlebars-template">
-	{{#each answers}}
-	<div class="single_a_container">
-		<p>{{A_Giver}} answered at {{A_Date}} :</p>
-		<p>{{A_Text}}</p>
-
-	</div>
-</div>
-</div>
-{{/each}}
-
-</script>
+	</script>
 
 </div>
 

@@ -44,6 +44,14 @@ var HashService = (function(){
   }
 })();
 
+var CounterService = (function(){
+  return{
+    get: function(){
+      return 42;
+    }
+  }
+})
+
 
 var QuestionController= (function() {
   var template;
@@ -82,6 +90,7 @@ var QuestionController= (function() {
       QuestionService.get_real_id(q_id).then(function(id){
         QuestionService.karmaplus(id).then(function(){
           ctrl.showAll();
+          NewsController.onReady();
         });
       })
     },
@@ -89,6 +98,7 @@ var QuestionController= (function() {
       QuestionService.get_real_id(q_id).then(function(id){
         QuestionService.karmaminus(id).then(function(){
           ctrl.showAll();
+          NewsController.onReady();
         });
       })
       },

@@ -4,13 +4,13 @@
 	<title>FUBA - the new StackOverflow!!!</title>
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="libs/css/fonts/font-awesome.min.css">
+	<meta charset="UTF-8">
 </head>
 
 <body>
 
 	<div id="landing_header"></div>
 	<h1>FUBA - the new StackOverflow!!!</h1>
-</div>
 
 <div id="alpha_login">
 
@@ -62,7 +62,7 @@
 	</div>
 </script>
 
-<h2>----- New Questions -----</h2>
+<h3 class="LP_headline">New Questions</h3>
 <div id="news"></div>
 <script id="news_template" type="text/x-handlebars-template">
 	{{#each news}}
@@ -78,9 +78,10 @@
 				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
 			</div>
 		</div>
+		<a class="clickable_area" href="/SingleQuestion.html?{{Q_ID}}">
 		<div class="single_q_textblock">
 			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
-			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<h3>{{Q_Title}}</h3>
 			<div class="single_q_text">
 				<p>{{Q_Text}}</p>
 				{{#if Edit_Date}}
@@ -88,11 +89,13 @@
 				{{/if}}
 			</div>
 		</div>
+		</a>
 	</div>
 </div>
 	{{/each}}
 </script>
-<h3>----- End of New Questions -----</h3>
+<h3 class="LP_headline">All Questions</h3>
+
 
 
 
@@ -114,9 +117,10 @@
 				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
 			</div>
 		</div>
+		<a class="clickable_area" href="/SingleQuestion.html?{{Q_ID}}">
 		<div class="single_q_textblock">
-			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
-			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<p> {{Q_Asker}} asked at {{Q_Date}}</p>
+			<h3>{{Q_Title}}</h3>
 			<div class="single_q_text">
 				<p>{{Q_Text}}</p>
 				{{#if Edit_Date}}
@@ -124,12 +128,24 @@
 				{{/if}}
 			</div>
 		</div>
+		</a>
 	</div>
 </div>
 {{/each}}
 
 
+
+
 </script>
+
+
+<div class="footer">
+<div class="row footer_row">
+&copy; FUBA 2015 - <a href="/impressum.html">Impressum</a> - <a href="mailto:elbeshausen@hochgestalten.com">Kontakt</a>
+</div>
+</div>
+
+
 <script type="text/javascript" src="http://baqend.com/js-sdk/0.9.6/baqend.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>

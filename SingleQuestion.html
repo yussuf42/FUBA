@@ -21,8 +21,19 @@
 			<div id="single"></div>
 			<script id="single_template" type="text/x-handlebars-template">
 				{{#each single}}
-				<div class="single_q_container">
 
+				<div class="single_q_container">
+		<div class="karma_container">
+			<div class="row">
+				<a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
+			</div>
+			<div class="row">
+				<h3 class="karma_number">{{Karma}}</h3>
+			</div>
+			<div class="row">
+				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
+			</div>
+		</div>
 					<p> {{Q_Asker}} asked at {{Q_Date}}</p>
 					<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
 					<div class="single_q_text">
@@ -64,7 +75,20 @@
 			<div id="answers"></div>
 			<script id="answer_template" type="text/x-handlebars-template">
 				{{#each answers}}
+				
 				<div class="single_a_container">
+
+		<div class="karma_container">
+			<div class="row">
+				<a onclick="a_karma_plus({{A_ID}});" class="karma_plus"></a>
+			</div>
+			<div class="row">
+				<h3 class="karma_number">{{Karma}}</h3>
+			</div>
+			<div class="row">
+				<a onclick='a_karma_minus({{A_ID}});' class="karma_minus"></a>
+			</div>
+		</div>
 					<p>{{A_Giver}} answered at {{A_Date}} :</p>
 					<p>{{A_Text}}</p>
 					{{#if Edit_Date}}
@@ -96,6 +120,24 @@
 		location.reload();
 		return false;
 	}
+
+		function karma_plus(id){
+			AnswerController.karmaplus(id);
+		}
+
+		function karma_minus(id){
+			AnswerController.karmaminus(id);
+		}
+
+		function a_karma_plus(id){
+			AnswerController.a_karmaplus(id);
+		}
+
+		function a_karma_minus(id){
+			AnswerController.a_karmaminus(id);
+		}
+
+
 </script>
 
 </body>

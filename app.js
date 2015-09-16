@@ -110,7 +110,7 @@ var QuestionController= (function() {
           NewsController.onReady();
         });
       })
-      },
+   }, 
     
     onReady: function() {
       var source= $("#question_template").html();

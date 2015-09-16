@@ -93,9 +93,57 @@ table, th, td {
     width: 775px;
     padding: 10px;
     margin-top: 25px;
+    min-height: 100px;
 }
 
 .title_link{
     text-decoration: none;
     color: #000;
+}
+
+.karma_number{
+  float: left;
+  margin: 0px 0 0 0;
+  position: relative;
+  float: left;
+}
+
+.karma_plus{
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent; 
+  border-right: 20px solid transparent; 
+  border-bottom: 30px solid grey;
+  position: relative;
+  float: left;
+  margin: 0 0 10px 0px;
+  z-index: 1;
+}
+
+.karma_plus:hover, .karma_minus:hover{
+  cursor: pointer;
+}
+
+.karma_minus{
+  z-index: 1;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent; 
+  border-right: 20px solid transparent; 
+  border-top: 30px solid grey;
+  float: left;
+  position: relative;
+  margin: 10px 0 0 0px;
+}
+
+.karma_container{
+  float: left;
+  margin-left: 20px;
+  width: 60px;
+  min-height: 120px;
+}
+
+.karma_number{
+  text-align: center;
+  width: 40px;
 }

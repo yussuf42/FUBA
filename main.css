@@ -382,9 +382,6 @@ h3{
   width: 980px;
   margin: 10px auto;
   padding: 10px;
-<<<<<<< HEAD
-=======
-  margin: 5px 15px 10px 20px;
 }
 
 .clickable_area{
@@ -395,6 +392,12 @@ h3{
 .LP_headline{
   text-align: center;
   font-family: "font-awesome",sans-serif;
+  font-size: 34px;
+  color: orange;
+  background-color: black;
+  -webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+border-radius: 25px;
 }
 
 .footer{

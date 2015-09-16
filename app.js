@@ -47,10 +47,18 @@ var HashService = (function(){
 var CounterService = (function(){
   return{
     get: function(){
-      return 42;
+      return DB.Counter.load("dbaf09c5-e40b-4189-ab80-5443d045df49").then(function(result){
+        return result.Counter;
+      });
+    },
+    increment: function(){
+      return DB.Counter.load("dbaf09c5-e40b-4189-ab80-5443d045df49").then(function(result){
+        result.Counter +=1;
+        return result.update();
+      });
     }
   }
-})
+})();
 
 
 var QuestionController= (function() {
@@ -67,8 +75,8 @@ var QuestionController= (function() {
       QuestionService.all().then(render);
     },
     add: function(user,title, question){
-      QuestionService.count().then(function(count) {
-      count++;
+      CounterService.get().then(function(count){
+      alert(count);
       var temp_date = new Date().getTime();
       temp_hash = HashService.createHash(title,temp_date);
       var temp_question = new DB.Questions({
@@ -82,6 +90,7 @@ var QuestionController= (function() {
       });
       QuestionService.save(temp_question);
       });
+      CounterService.increment();
         alert('Question saved, thank you!');
       render();
     },

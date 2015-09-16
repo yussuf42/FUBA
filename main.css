@@ -1,5 +1,5 @@
 *{
-  font-family: arial, helvetica, Sans-Serif;
+  font-family: font-awesome, arial, helvetica, Sans-Serif;
   text-rendering: optimizeLegibility;
 }
 body{
@@ -354,4 +354,60 @@ h1{
   border: 2px solid green;
   padding: 10px;
   margin: 5px 15px 10px 20px;
+}
+
+.clickable_area{
+  text-decoration: none;
+  color: #000;
+}
+
+.LP_headline{
+  text-align: center;
+  font-family: "font-awesome",sans-serif;
+}
+
+.footer{
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin:  10px 0 10px;
+  background-color: grey;
+}
+
+.footer_row{
+  height: 20px;
+  margin: 7px;
+  z-index: 1;
+  background-color: white;
+  width: 99%;
+}
+
+#credits{
+  margin: 16px 0;
+  width: 40%;
+  text-align: center;
+  float: right;
+  position: relative;
+  border: 1px dotted black;
+  padding: 12px;
+}
+
+#impressum_container{
+  float: left;
+  position: relative;
+  width: 50%;
+  border: 1px dotted black;
+  padding: 12px;
+
+}
+
+#im_container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+.last_link{
+  margin-top : 1000px; 
+  width: 100%;
+  text-align: center;
 }

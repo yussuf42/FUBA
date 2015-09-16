@@ -59,8 +59,10 @@ h2{
     resize: none;
     display: block;
     width: 400px;
-    
     margin-bottom: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
 }
 
 #answer_button{

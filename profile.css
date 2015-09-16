@@ -109,12 +109,12 @@ h1{
 }
 
 .fold_edit{
-	width: 0; 
-	height: 0; 
-	border-left: 20px solid transparent; 
-	border-right: 20px solid transparent; 
-	border-bottom: 40px solid red;
-	cursor: pointer;
-	float: left;
-	position: relative;
+width: 0;
+height: 20px;
+border-style: solid;
+border-width: 0 15px 25px 15px;
+border-color: transparent transparent #ff000d transparent;
+z-index: 1;
+padding: 0px;
+background-color: lightgrey;
 }

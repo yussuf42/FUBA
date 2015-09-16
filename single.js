@@ -96,6 +96,35 @@ var AnswerService = (function(){
       .then(function(result){
         return result.id;
       });
+    },
+    karmaplus: function(id){
+      return DB.Answers.load(id).then(function(answer){
+        answer.Karma++;  
+        return answer.update();
+      });
+    },
+    karmaminus:function(id){
+      return DB.Answers.load(id).then(function(answer){
+        answer.Karma-=1;
+        return answer.update();
+      });
+    },
+        votedusers: function(id){
+      return DB.Answers.load(id).then(function(answer){
+        return answer.voted_users;
+      });
+    },
+    addvoteduser: function(id){
+      return DB.Answers.load(id).then(function(answer){
+        answer.voted_users.add(DB.User.me.username);
+        answer.update();
+      });
+    },
+    initvoteduser: function(id){
+      return DB.Answers.load(id).then(function(answer){
+        answer.voted_users = new DB.Set([DB.User.me.username]);
+        answer.update();
+      });      
     }
   }
 })();
@@ -190,7 +219,6 @@ var AnswerController = (function(){
             if(result.has(DB.User.me.username))
               alert('Sorry, you cant vote more than once for each question!');
             else{
-              alert('42');
               SingleService.get_real_id(q_id).then(function(id){
                 SingleService.karmaminus(id).then(function(){
                   SingleService.addvoteduser(id);
@@ -202,7 +230,7 @@ var AnswerController = (function(){
           }
           else{
             SingleService.initvoteduser(id);
-            AnswerService.get_real_id(q_id).then(function(id){
+            SingleService.get_real_id(q_id).then(function(id){
               SingleService.karmaminus(id).then(function(){
                 var query = parseInt(window.location.search.substring(1));
                 SingleController.show(query);
@@ -215,18 +243,54 @@ var AnswerController = (function(){
     }, 
     a_karmaplus: function(a_id){
       AnswerService.get_real_id(a_id).then(function(id){
-        AnswerService.karmaplus(id).then(function(){
-          var query = parseInt(window.location.search.substring(1));
-          ctrl.show(query);
-        });
+        AnswerService.votedusers(id).then(function(result){
+          if(result != null){
+            if(result.has(DB.User.me.username))
+              alert('Sorry, you cant vote more than once for each answer');
+            else{
+              AnswerService.karmaplus(id).then(function(){
+                AnswerService.addvoteduser(id);
+                var query = parseInt(window.location.search.substring(1));
+                ctrl.show(query);
+              });
+            }
+          }
+          else{
+            AnswerService.initvoteduser(id);
+            AnswerService.get_real_id(a_id).then(function(id){
+              AnswerService.karmaplus(id).then(function(){
+                var query = parseInt(window.location.search.substring(1));
+                ctrl.show(query);
+              })
+            })
+          }
+        })
       })
     },
     a_karmaminus: function(a_id){
       AnswerService.get_real_id(a_id).then(function(id){
-        AnswerService.karmaminus(id).then(function(){
-          var query = parseInt(window.location.search.substring(1));
-          ctrl.show(query);
-        });
+        AnswerService.votedusers(id).then(function(result){
+          if(result != null){
+            if(result.has(DB.User.me.username))
+              alert('Sorry, you cant vote more than once for each answer');
+            else{
+              AnswerService.karmaminus(id).then(function(){
+                AnswerService.addvoteduser(id);
+                var query = parseInt(window.location.search.substring(1));
+                ctrl.show(query);
+              });
+            }
+          }
+          else{
+            AnswerService.initvoteduser(id);
+            AnswerService.get_real_id(a_id).then(function(id){
+              AnswerService.karmaminus(id).then(function(){
+                var query = parseInt(window.location.search.substring(1));
+                ctrl.show(query);
+              })
+            })
+          }
+        })
       })
     },
     onReady: function(){

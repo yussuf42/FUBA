@@ -3,39 +3,40 @@
 <head>
 	<title>FUBA - the new StackOverflow!!!</title>
 	<link rel="stylesheet" href="main.css">
-<link rel="stylesheet" href="libs/css/fonts/font-awesome.min.css">
+	<link rel="stylesheet" href="libs/css/fonts/font-awesome.min.css">
 </head>
 
 <body>
 
-		<div id="landing_header"></div>
-			<h1>FUBA - the new StackOverflow!!!</h1>
-		</div>
+	<div id="landing_header"></div>
+	<h1>FUBA - the new StackOverflow!!!</h1>
+</div>
+
 <div id="alpha_login">
 
-<div id='welcome'> </div>
-<div id="login"></div>
-<script id="user_area" type="text/x-handlebars-template">
-<form id="login_form" onSubmit="return Login();">
-<label class="login_label">Benutzername</label>
-	<input type="text" id="login_name"/>
-<label class="login_label">Passwort</label>
-	<input type="password" id="login_pass"/>
-	<button type="submit" id="login_button">Login</button>
-</form>
-<div id="register_link_wrap">
-	<a id="register_link_button" href="http://127.0.0.1:8050/register.html">Register now!</a>
-</div>
-</script>
+	<div id='welcome'> </div>
+	<div id="login"></div>
+	<script id="user_area" type="text/x-handlebars-template">
+		<form id="login_form" onSubmit="return Login();">
+			<label class="login_label">Benutzername</label>
+			<input type="text" id="login_name"/>
+			<label class="login_label">Passwort</label>
+			<input type="password" id="login_pass"/>
+			<button type="submit" id="login_button">Einloggen</button>
+		</form>
+		<div id="register_link_wrap">
+			<a id="register_link_button" href="http://127.0.0.1:8050/register.html">Register now!</a>
+		</div>
+	</script>
 
 
-<div id="logout"></div>
-<script id="logout_template" type="text/x-handlebars-template">
-<a id="profile_link_button" href="http://127.0.0.1:8050/profile.html">Get to Your personal Profile Page</a>
-<form id="logout_form" onSubmit="return Logout();">
-  <button type="submit" id="logout_button">Logout</button>
-</form>
-</script>
+	<div id="logout"></div>
+	<script id="logout_template" type="text/x-handlebars-template">
+		<a href="http://127.0.0.1:8050/profile.html">Get to Your personal Profile Page</a>
+		<form id="logout_form" onSubmit="return Logout();">
+			<button type="submit" id="logout_button">Ausloggen</button>
+		</form>
+	</script>
 
 
 </div>
@@ -47,62 +48,100 @@
 <script id="inputs" type="text/x-handlebars-template">
 	<div id="input_container">
 		<div class="inner_container">
-		<form id="add_question" onsubmit="Submit_Question();">
-			<div class="row">
-			<input type="text" required id="question_title_input" placeholder="Your Question Title" value="">
+			<form id="add_question" onsubmit="Submit_Question();">
+				<div class="row">
+					<input type="text" required id="question_title_input" placeholder="Your Question Title" value="">
+				</div>
+				<div class="row">
+					<textarea value="" required maxlength:"2000" rows:"200" id="landing_question" type="text" value="" placeholder="Type Your Question here!" ></textarea>
+				</div>
+				<div class="row fullwidth"><div id="button_wrapper"><button id="question_button" type="submit" onSubmit="Submit_Question();">Submit Your Question!</button>
+				</div>
 			</div>
-			<div class="row">
-				<textarea value="" required maxlength:"2000" rows:"200" id="landing_question" type="text" value="" placeholder="Type Your Question here!" ></textarea>
-			</div>
-			<div class="row fullwidth"><div id="button_wrapper"><button id="question_button" type="submit" onSubmit="Submit_Question();">Submit Your Question!</button>
-			</div>
-			</div>
-			</form> 
-			</div>
+		</form> 
+	</div>
 </script>
-	
+
+<h3>New Fucking Questions</h3>
+<div id="news"></div>
+<script id="news_template" type="text/x-handlebars-template">
+	{{#each news}}
+<div class="single_q_container">
+		<div class="karma_container">
+			<div class="row">
+				<a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
+			</div>
+			<div class="row">
+				<h3 class="karma_number">{{Karma}}</h3>
+			</div>
+			<div class="row">
+				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
+			</div>
+		</div>
+		<div class="single_q_textblock">
+			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
+			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<div class="single_q_text">
+				<p>{{Q_Text}}</p>
+				{{#if Edit_Date}}
+				<p class="edit_text">Last edited at {{Edit_Date}}</p>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</div>
+	{{/each}}
+</script>
+<h3>End of NFQ</h3>
+
+
 
 <div id="questions"></div>
 
 
-	<script id="question_template" type="text/x-handlebars-template">
+<script id="question_template" type="text/x-handlebars-template">
 
-			{{#each questions}}
-			<div class="single_q_container">
-      <div class="karma_container">
-      <div class="row">
-      <a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
-      </div>
-      <div class="row">
-      <h3 class="karma_number">{{Karma}}</h3>
-      </div>
-      <div class="row">
-      <a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
-      </div>
-      </div>
-      <div class="single_q_textblock">
-				<p> {{Q_Asker}} posted at {{Q_Date}}</p>
-				<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
-				<div class="single_q_text">
-					<p>{{Q_Text}}</p>
-				</div>
-        </div>
+	{{#each questions}}
+	<div class="single_q_container">
+		<div class="karma_container">
+			<div class="row">
+				<a onclick="karma_plus({{Q_ID}});" class="karma_plus"></a>
+			</div>
+			<div class="row">
+				<h3 class="karma_number">{{Karma}}</h3>
+			</div>
+			<div class="row">
+				<a onclick='karma_minus({{Q_ID}});' class="karma_minus"></a>
 			</div>
 		</div>
-		{{/each}}
+		<div class="single_q_textblock">
+			<p> {{Q_Asker}} posted at {{Q_Date}}</p>
+			<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
+			<div class="single_q_text">
+				<p>{{Q_Text}}</p>
+				{{#if Edit_Date}}
+				<p class="edit_text">Last edited at {{Edit_Date}}</p>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</div>
+{{/each}}
 
 
-	</script>
-		<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</script>
+<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	<script type="text/javascript" src="user.js"></script>
-	<script type="text/javascript" src="input.js"></script>
-		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
-		
-		<script type="text/javascript">
-		function Submit_Question(){
+<script type="text/javascript" src="connect.js"></script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="user.js"></script>
+<script type="text/javascript" src="input.js"></script>
+<script type="text/javascript" src="news.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+
+<script type="text/javascript">
+	function Submit_Question(){
 			var temp_user = $("#landing_username").val(); //TODO
 			var temp_title = $("#question_title_input").val();
 			var temp_question = $("#landing_question").val();
@@ -119,15 +158,15 @@
 			UserController.logout();
 		}
 
-    function karma_plus(id){
-      QuestionController.karmaplus(id);
-    }
+		function karma_plus(id){
+			QuestionController.karmaplus(id);
+		}
 
-    function karma_minus(id){
-      QuestionController.karmaminus(id);
-    }
+		function karma_minus(id){
+			QuestionController.karmaminus(id);
+		}
 
-		</script>
+	</script>
 
 </body>
 

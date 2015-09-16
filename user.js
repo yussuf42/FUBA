@@ -1,5 +1,3 @@
-
-
 var UserService= (function(){
   return{
     login: function(user, password){

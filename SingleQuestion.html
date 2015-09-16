@@ -27,7 +27,9 @@
 					<a href="/SingleQuestion.html?{{Q_ID}}">{{Q_Title}}</a>
 					<div class="single_q_text">
 						<p>{{Q_Text}}</p>
-
+					{{#if Edit_Date}}
+					<p>Last edited at {{Edit_Date}}</p>
+					{{/if}}
 					</div>
 				</div>
 				<form id="useless">
@@ -80,6 +82,7 @@
 <script type="text/javascript" src="http://baqend.com/js-sdk/0.9.5/baqend.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="connect.js"></script>
 <script type="text/javascript" src="single.js"></script>
 <script type="text/javascript" src="user.js"></script>
 <script type="text/javascript" src="input.js"></script>

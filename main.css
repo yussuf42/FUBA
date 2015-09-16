@@ -344,3 +344,14 @@ h1{
   width: 40px;
 }
 
+
+.edit_text{
+  font-style: italic;
+  font-size: 14px;
+}
+
+#news{
+  border: 2px solid green;
+  padding: 10px;
+  margin: 5px 15px 10px 20px;
+}

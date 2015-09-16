@@ -1,6 +1,3 @@
-//Let's connect to our Baqend
-DB.connect("http://fuba.baqend.com");
-
 var ProfileService = (function(){
 	return{
 		isLoggedin: function(){
@@ -40,6 +37,7 @@ var ProfileService = (function(){
 		update_question: function(id, text){
 			return DB.Questions.load(id).then(function(question){
 				question.Q_Text = text;
+				question.Edit_Date = new Date().getTime();
 				return question.update();
 			})
 		},

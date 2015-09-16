@@ -38,6 +38,23 @@ var SingleService= (function(){
         return question.update();
       });
     },
+        votedusers: function(id){
+      return DB.Questions.load(id).then(function(question){
+        return question.voted_users;
+      });
+    },
+    addvoteduser: function(id){
+      return DB.Questions.load(id).then(function(question){
+        question.voted_users.add(DB.User.me.username);
+        question.update();
+      });
+    },
+    initvoteduser: function(id){
+      return DB.Questions.load(id).then(function(question){
+        question.voted_users = new DB.Set([DB.User.me.username]);
+        question.update();
+      });      
+    }
   }
 })();
 
@@ -140,18 +157,62 @@ var AnswerController = (function(){
     },
     karmaplus: function(q_id){
       SingleService.get_real_id(q_id).then(function(id){
-        SingleService.karmaplus(id).then(function(){
-          SingleController.onReady();
+        SingleService.votedusers(id).then(function(result){
+          if(result != null){
+            if(result.has(DB.User.me.username))
+              alert('Sorry, you cant vote more than once for each question!');
+            else{
+              SingleService.get_real_id(q_id).then(function(id){
+                SingleService.karmaplus(id).then(function(){
+                  SingleService.addvoteduser(id);
+                  var query = parseInt(window.location.search.substring(1));
+                  SingleController.show(query);
+                });
+              });
+            }
+          }
+          else{
+            SingleService.initvoteduser(id);
+            SingleService.get_real_id(q_id).then(function(id){
+              SingleService.karmaplus(id).then(function(){
+                var query = parseInt(window.location.search.substring(1));
+                SingleController.show(query);
+              });
+            });
+          }
         });
-      })
+      });
     },
     karmaminus: function(q_id){
       SingleService.get_real_id(q_id).then(function(id){
-        SingleService.karmaminus(id).then(function(){
-          SingleController.onReady();
+        SingleService.votedusers(id).then(function(result){
+          if(result != null){
+            if(result.has(DB.User.me.username))
+              alert('Sorry, you cant vote more than once for each question!');
+            else{
+              alert('42');
+              SingleService.get_real_id(q_id).then(function(id){
+                SingleService.karmaminus(id).then(function(){
+                  SingleService.addvoteduser(id);
+                  var query = parseInt(window.location.search.substring(1));
+                  SingleController.show(query);
+                });
+              });
+            }
+          }
+          else{
+            SingleService.initvoteduser(id);
+            AnswerService.get_real_id(q_id).then(function(id){
+              SingleService.karmaminus(id).then(function(){
+                var query = parseInt(window.location.search.substring(1));
+                SingleController.show(query);
+              });
+            });
+          }
         });
-      })
-    },
+
+      });
+    }, 
     a_karmaplus: function(a_id){
       AnswerService.get_real_id(a_id).then(function(id){
         AnswerService.karmaplus(id).then(function(){

@@ -1,3 +1,7 @@
+/*
+  User.js is loaded on index and SingleQuestion
+  UserService is responsible for the DB-Access. However, we dont need any more than user-information.All functions in here are pretty self-explanatory.
+*/
 var UserService= (function(){
   return{
     login: function(user, password){
@@ -22,6 +26,9 @@ var UserService= (function(){
   })();
 
 
+/*
+  The UserController takes care of normal Controller-Stuff and additionaly handles a welcome-message in its onReady-Function.
+*/
   var UserController= (function(){
     var template;
     var logout_template;

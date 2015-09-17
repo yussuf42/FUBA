@@ -1,23 +1,31 @@
-Baqend ToDo-App
+FUBA - The New StackOverflow
 ============
 
-![Baqend.com](http://www.baqend.com/guide/img/baqend_logo.svg)
+built by 
+-------
+	Philipp Danne
+	Manuel Grill
+	René Ogniwek
+	Jasper Elbeshausen
+-------
+between September 1st and September 17th of 2015
 
-Visit our website [www.baqend.com](http://www.baqend.com)
+in the Duvs-Praktikum "Datenbanken und verteilte Systeme"
+at University of Hamburg.
 
-Read the [Baqend Guide](http://www.baqend.com/guide/) online
+All Code written at Campus in Stellingen.
 
-Do you have questions, a future request or did you find a bug? Open a [ticket](https://github.com/Baqend/todo/issues). 
 
 Installation
 -------
 
     npm install -g grunt-cli
-    git clone https://github.com/Baqend/todo.git .
+    git clone https://github.com/yussuf42/FUBA .
     npm install
     grunt
 
 License
 -------
 
-This Baqend Todo-App is published under the very permissive [MIT license](LICENSE.md)
+This App is neither published nor licensed.
+Anyone who wants to use this for commercial, educational or any other use can ask the team for permission by writing at 2elbesha@informatik.uni-hamburg.de

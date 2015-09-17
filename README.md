@@ -7,7 +7,7 @@ built by
 	Manuel Grill
 	René Ogniwek
 	Jasper Elbeshausen
--------
+
 between September 1st and September 17th of 2015
 
 in the Duvs-Praktikum "Datenbanken und verteilte Systeme"

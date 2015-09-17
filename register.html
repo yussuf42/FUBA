@@ -10,6 +10,8 @@
 
 	<a class="title_link" href="http://127.0.0.1:8050/index.html"><h1>FUBA - the new StackOverflow!!!</h1></a>
 
+
+<!-- This Script takes care of the top-box on /register, where the user can see as who he's logged in, log out and go back to the Start Page. It was supposed to hold more information about the user once we have implemented them. However, we couldn't find the time to implement those.-->
 <div id="stupid_msg"></div>
 <script id="stupid_area" type="text/x-handlebars-template">
 	<p>Hey there, you are already logged in as <span style="font-weight:bold;" class="username"></span>. </br>
@@ -58,13 +60,15 @@
 </body>
 
 <script type="text/javascript">
+
+	/*
+		Register registers a user. It gets all the necessary data via JQuery from the Input-Fields and before sending the data to the database it checks if the password is the same in both fields. However, we are still missing a bit of validation : If the user tries to register with an already registered username, nothing will happen ; and if the user doesn't type the password correct both times, nothing will happen either. So, in terms of functionality it works, but in terms of validity and userfriendliness it's a mess.
+	*/
 	function Register(){
 
 		var_user = $('#reg_name').val();
 		var_pass = $('#reg_pass').val();
 		var_pass_2 = $('#reg_pass_2').val();
-		console.log(var_pass);
-		console.log(var_pass_2);
 		if (var_pass == var_pass_2)
 		RegisterController.register(var_user,var_pass);
 		return false;

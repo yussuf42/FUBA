@@ -1,3 +1,17 @@
+/*
+  single.js gets only loaded at /SingleQuestion.html.
+  SingleService takes care of DB-Access, en detail :
+  "show" just fetches the Question with the correct Q_ID from the Database. A resultList is used instead of a singleResult because it's convenient.
+  "showAnswers" fetches all Answers with the correct Q_ID, that is all Answers answering the previously loaded Question.
+  "count" is legacy, it counts all Answers but isn't used anywhere. However, to further develop the WebApp it can be useful which is why it's still there.
+  "save" just saves an answer to the Database.
+  "get_real_id" I think I explained twice, just look in app.js 
+  "karmaplus" increments the Karma-Value of a given Question 
+  "karmaminus" decrements the very same value.
+  "votedusers" gets the users who already voted for the loaded Question (to be precise it gets the "voted_users"-Array from the Question with the given id).
+  "addvoteduser" adds the current user to the "voted_users"-Array so that he can't vote another time.
+  "initvoteduser" is used when said "voted_users"-Array is empty, initializes it and adds the current user to it.
+*/
 var SingleService= (function(){
   return{
     show: function(query){
@@ -59,6 +73,9 @@ var SingleService= (function(){
 })();
 
 
+/*
+  The CounterService can fetch and/or increment the A_ID-Counter. We need this to ensure that every single Answer has a unique, consecutive Id.
+*/
 var CounterService = (function(){
   return{
     get: function(){
@@ -75,6 +92,13 @@ var CounterService = (function(){
   }
 })();
 
+/*
+  The AnswerService is responsible for the DB-Access concerning the Answers. In Detail :
+  "karmaplus" increments the Karma-Value of a given Answer which is loaded via its id (that is, "id", not "A_ID").
+  "karmaminus" is the equivalent for decrementing.
+  "get_real_id" gets the "id" of an answer by a given "A_ID".
+  "kar"
+*/
 var AnswerService = (function(){
   return{
     karmaplus: function(id){
@@ -95,18 +119,6 @@ var AnswerService = (function(){
       .singleResult()
       .then(function(result){
         return result.id;
-      });
-    },
-    karmaplus: function(id){
-      return DB.Answers.load(id).then(function(answer){
-        answer.Karma++;  
-        return answer.update();
-      });
-    },
-    karmaminus:function(id){
-      return DB.Answers.load(id).then(function(answer){
-        answer.Karma-=1;
-        return answer.update();
       });
     },
         votedusers: function(id){

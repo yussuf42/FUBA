@@ -147,3 +147,10 @@ table, th, td {
   text-align: center;
   width: 40px;
 }
+
+#info_text{
+  width: 80%;
+  margin: 0 auto;
+  border: 1px dotted black;
+  text-align: center;
+}

@@ -1,3 +1,21 @@
+/*
+
+As this is the main-js-file, generic functions (like render and onReady) are only explained once - here - and not on every other .js-file they are in.
+
+The QuestionService is primary responsible for fetching all the questions from the database to the Landing-Page
+The Functions in detail :
+
+  "all" : Gets all Questions from the database
+  "count" : Gets the number of all Questions
+  "save" : just saves a question. 
+  "get_real_id" : As we are working with Q_ID for identifying our Questions, we need this function to get the id from a given Q_ID, to then use the id in the load-process.
+  "karmaplus" : Pretty self-explanatory, this just increments the karma of a given question.
+  "karmaminus" : Same thing, just for decrementing.
+  "votedusers" : As every User may only vote once, this returns an array of all users who already voted for this question from the Questions-database.
+  "addvoteduser" : Every time a user succesfully votes this function is called, adding his username to the array of votedusers.
+  "initvoteduser" : When the Array of votedusers is empty, the add-function in addvoteduser doesn't work, so this is for initializing the array.
+*/
+
 var QuestionService= (function(){
   return{
     all: function(){
@@ -48,18 +66,26 @@ var QuestionService= (function(){
         question.voted_users = new DB.Set([DB.User.me.username]);
         question.update();
       });      
-    }
-  }
-})();
-
-var HashService = (function(){
-  return{
-    createHash: function(title, date){
-      hash = title.concat(date.toString());
-      return hash;
+    },
+        isLoggedin: function(){
+      if (DB.User.me) {
+        return true;
+      } 
+      else {
+        return false;
+      }
     },
   }
 })();
+
+
+/*
+The CounterService is responsible for getting correct new Q_ID's from our Counter-Database, both Counters are just implemented as simple Data with an Integer counting on 
+for every new Question entered. First the "get" is used to get the current counter, and afterwards it's incremented by - what a surprise - the "increment"-function.
+As the Counter is always the same we can easily just get it with the hardcoded id of the counter.
+
+
+*/
 
 var CounterService = (function(){
   return{
@@ -76,6 +102,20 @@ var CounterService = (function(){
     }
   }
 })();
+
+/*
+The QuestionController takes care of adding new Questions and inhibits the functionality of the karma-functions.
+In Detail :
+  "render" : typical, just renders the template on index.html which is responsible for displaying all Questions (to be precise : it really only takes care of the "All Questions"-Section, the "New Questions"-Section is handled by another js, namely news.js)
+  "showAll" : this is just the function taking care of binding QuestionService to the render-function, such that the render function can take the result from the QuestionService.all-Function to display it in the way the html-handlebars-template defines it.  
+  "add" : This function takes care of adding new Questions to the Database and uses the CounterService to get the correct Q_ID and increment the counter, as well as the QuestionService to save the new Question.
+  "karmaplus" : This looks a bit bloated, which is due to the few possibilities while voting for a question - more on this in the Praktikumsbericht. Essentially this is responsible for the process between "A user clicks on the Vote-Up-Arrow" and the Refreshing of the Karma-Number on the homepage.
+  "karmaminus" : The Equivalent to karmaplus for voting down.
+  "onReady" : Just as render, this function we use in every single .js to be executed on pageload and get the system going.
+
+
+*/
+
 
 
 var QuestionController= (function() {
@@ -94,7 +134,6 @@ var QuestionController= (function() {
     add: function(user,title, question){
       CounterService.get().then(function(count){
         var temp_date = new Date().getTime();
-        temp_hash = HashService.createHash(title,temp_date);
         var temp_question = new DB.Questions({
           Q_Asker : DB.User.me.username,
           Q_Title : title,
@@ -102,7 +141,6 @@ var QuestionController= (function() {
           Q_ID : count,
           Q_Date : temp_date,
           Karma : 0,
-          Q_hash : temp_hash
         });
         QuestionService.save(temp_question);
       });
@@ -112,6 +150,7 @@ var QuestionController= (function() {
     },
 
     karmaplus: function(q_id){
+      if(QuestionService.isLoggedin()){
       QuestionService.get_real_id(q_id).then(function(id){
         QuestionService.votedusers(id).then(function(result){
           if(result != null){
@@ -138,8 +177,11 @@ var QuestionController= (function() {
           }
         });
       });
+  }
+  else alert('Sorry. You need to be logged in to vote!');
     },
     karmaminus: function(q_id){
+            if(QuestionService.isLoggedin()){
       QuestionService.get_real_id(q_id).then(function(id){
         QuestionService.votedusers(id).then(function(result){
           if(result != null){
@@ -168,7 +210,9 @@ var QuestionController= (function() {
         });
 
       });
-    }, 
+    }
+    else alert('Sorry. You need to be logged in to vote!');
+  },
     onReady: function() {
       var source= $("#question_template").html();
       template = Handlebars.compile(source);

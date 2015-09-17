@@ -1,3 +1,14 @@
+/*
+	profile.js is responsible for the /profile-page which is only containing useful information if the user logged in.
+	ProfileService takes care of all Database-related tasks, in detail :
+	"isLoggedin" : Common function, used for checking if the user is logged in.
+	"userquestions" : This function fetches all questions posted by the logged in user.
+	"user" : this just returns all Info from the User-Database for the logged in user, this was mostly thought to later get more information like an avatar or a personal-bio or other personal stuff. As we didn't get to implement this, it could've been done easier - but for further expanding the webapp it's useful.
+	"answers" : This fetches all Answers given by the logged in user.
+	"get_real_id" : common function to get the id from a given Q_ID to be used in a load-command.
+	"update_question" : As the user is able to edit his questions and answers, we need DB-Write-Commands to update them, this one's for updating the Question.
+	"update_answer" : Equivalent to update_question, this is used to update an existing answer. 
+*/
 var ProfileService = (function(){
 	return{
 		isLoggedin: function(){
@@ -51,7 +62,15 @@ var ProfileService = (function(){
 	}
 })();
 
-
+/*
+	The ProfileController is the one responsible for all three scripts on profile.html, in detail:
+	"renderquestions" is rendering the questions previously fetched by ProfileService.userquestions and both are wrapped in "ctrl.showQuestions"
+	"renderuserinfo" is rendering the personal data fetched by ProfileService.user and both are wrapped in "ctrl.showProfile"
+	"renderanswers" is rendering the answers previously fetched by ProfileService.answers and both are wrapped in "ctrl.showAnswers"
+	"updateQuestion" is using promises to first get the id from the given Q_ID of the updated question, then updating it with the new text and rendering the question-section again, with the updated question.
+	"updateAnswer" is the equivalent of updateQuestion for dealing with updated answers.
+	"onReady" is a bit bigger here, used for rendering all three scripts and checking whether the user is logged in. If he isn't a Popup shows, telling the user to login first before visiting this page (which isnt linked anywhere if not logged in anyway, so normally he shouldn't get here anyway.)
+*/
 var ProfileController= (function(){
 	var q_template;
 	var u_template;
@@ -105,7 +124,7 @@ var ProfileController= (function(){
 				ctrl.showAnswers();
 			}
 			else{
-				alert('not logged in, todo');
+				alert('You are not logged in, this page cant contain any useful information right now, please go back to the landing page, login and come back. You can use the headline, which is a link to the landingpage.');
 			}
 		}
 	};

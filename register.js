@@ -1,3 +1,10 @@
+/*
+	register.js is only used on /register.html .The RegisterService is taking care of the Db-Access, in detail :
+	"register" registers a user once it passed the validation.
+	"logout" logs the user out.
+	"isLoggedin" just checks if the user is logged in, you knew this already huh ?!
+	"getusername" just gets the username from the database and is fairly redundant as the DB-Access couldve been realised in the Controller below. However, a strict Seperation of Logic and DB-Access isn't the worst thing.
+*/
 var RegisterService = (function(){
 	return{
 		register: function(user, password){
@@ -21,6 +28,11 @@ var RegisterService = (function(){
 })();
 
 
+/*
+	The RegisterController takes care of the one script at /register.html and renders it.
+	"register" and "logout" are pretty self-explanatory
+	"redirect" is a case of very bad function naming. This function doesn't redirect at all, but is more of a onReady-Extension iff the user is logged in.
+*/
 var RegisterController = (function(){
 	var template;
 

@@ -14,6 +14,9 @@ var RegisterService = (function(){
 				return false;
 			}
 		},
+		getusername: function(){
+			return DB.User.me.username;
+		}
 	}
 })();
 
@@ -35,6 +38,8 @@ var RegisterController = (function(){
 		onReady: function(){
 			if(RegisterService.isLoggedin())
 				RegisterController.redirect();
+			$('.username').html(RegisterService.getusername);
+
 		},
 		redirect: function(){
 			var source = $('#stupid_area').html();

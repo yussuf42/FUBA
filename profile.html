@@ -89,35 +89,39 @@
 									<input type="hidden" name="id" value="{{id}}" />
 								</form>
 							</div>
-							<p>Blind Text to indicate that you can edit below. Where&#39;s the texter ?</p>
-							<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
-								<div class="row">
-									<textarea class="edit_answer_text" type="text" val="{{A_Text}}"/>
-								</div>
-								<input type="hidden" name="id" value="{{id}}" />
-								<button type="submit">Save Changes</button>
+							<p>Here you can edit your text and save your changes. </br> 
+								However, if this was a mistake you can just enfold this section again by 
+								clicking on the small red arrow above.<br/>
+								If this Area youre seeing is green, this means you never edited this Answer before.</p>
+								<form id="edit_a_{{id}}" onsubmit="return update_answer(id);">
+									<div class="row">
+										<textarea class="edit_answer_text" type="text">{{A_Text}}</textarea>
+									</div>
+									<input type="hidden" name="id" value="{{id}}" />
+									<button type="submit">Save Changes</button>
 
-							</form>
-						</div>
+								</form>
+							</div>
 						</div>
 						<div class="edit_answer_link">
 							<form id="show_answer_edit" onsubmit="return show_answer_edit(id);">
 								<input type="hidden" name="id" value="{{id}}" />
 								<button type="submit">Edit</button>
 							</form>
-					</div>
-					{{/each}}
-				</script>
-			</section>
+						</div>
+						</div>
+						{{/each}}
+					</script>
+				</section>
 
-			<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.6/baqend.js"></script>
-			<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-			<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="connect.js"></script>
-			<script type="text/javascript" src="profile.js"></script>
-			<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+				<script type="text/javascript" src="http://baqend.com/js-sdk/0.9.6/baqend.js"></script>
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+				<script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
+				<script type="text/javascript" src="connect.js"></script>
+				<script type="text/javascript" src="profile.js"></script>
+				<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
 
-			<script type="text/javascript">
+				<script type="text/javascript">
 /*	show_edit takes care of the edit-button for questions, so on click on the "edit"-button,
 *	the title-input and text-textarea show up and the edit link vanishes. 
 *	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!
@@ -143,7 +147,7 @@ function save_changes(Q_ID){
 
 /*	show_answer_edit is the equivalent of show_edit for the answer-section
 *	As such, it even shares the same 	
-*	TODO : SMALL FUNCTION FOR AN ARROW TO REVERT WHAT THIS FUNCTION DOES !!!!
+*	
 *
 *
 */

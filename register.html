@@ -12,7 +12,7 @@
 
 <div id="stupid_msg"></div>
 <script id="stupid_area" type="text/x-handlebars-template">
-	<p>Hey there, you are already logged in as *TODO:USERNAME*. </br>
+	<p>Hey there, you are already logged in as <span style="font-weight:bold;" class="username"></span>. </br>
 	However, as we are totally cool with you having multiple accounts,</br>
 	you can register twice. (...or thrice, or twenty times or heck, do it all day!)</br>
 	</br>
@@ -72,6 +72,8 @@
     function Logout(){
       RegisterController.logout();
     }
+
+
 </script>
 
 </html>
